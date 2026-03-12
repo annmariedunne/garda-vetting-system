@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="../GardaVettingSystem.Tests/GardaVettingSystem.Tests.csproj" Id="f5459a2d-95c4-4e1a-9a35-b002e01ac8e9" />
   <Project Path="GardaVettingSystem.csproj" />
 </Solution>
