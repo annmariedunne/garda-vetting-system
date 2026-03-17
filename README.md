@@ -1,5 +1,8 @@
 # Secure Web-Based Data Reuse System for Garda Vetting Applications
 
+[![CI - Build and Test](https://github.com/annmariedunne/garda-vetting-system/actions/workflows/ci.yml/badge.svg)](https://github.com/annmariedunne/garda-vetting-system/actions/workflows/ci.yml)
+[![CodeQL Security Scan](https://github.com/annmariedunne/garda-vetting-system/actions/workflows/codeql.yml/badge.svg)](https://github.com/annmariedunne/garda-vetting-system/actions/workflows/codeql.yml)
+
 > ⚠️ **This is a temporary README and will be updated as the project progresses.**
 
 ## Overview
