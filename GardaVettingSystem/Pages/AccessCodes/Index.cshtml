@@ -1,0 +1,66 @@
+﻿@page
+@model GardaVettingSystem.Pages.AccessCodes.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AccessCode[0].Code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccessCode[0].OrganisationName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccessCode[0].CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccessCode[0].ExpiryDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccessCode[0].IsActive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccessCode[0].Applicant)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.AccessCode) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrganisationName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpiryDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Applicant.FirstName)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.AccessCodeId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.AccessCodeId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.AccessCodeId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
