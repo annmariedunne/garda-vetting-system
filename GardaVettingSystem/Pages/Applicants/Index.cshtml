@@ -14,9 +14,6 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Applicant[0].UserId)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Applicant[0].FirstName)
             </th>
             <th>
@@ -44,9 +41,6 @@
 @foreach (var item in Model.Applicant) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.UserId)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.FirstName)
             </td>
             <td>
@@ -62,7 +56,7 @@
                 @Html.DisplayFor(modelItem => item.Gender)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DateOfBirth)
+                @item.DateOfBirth?.ToString("d")
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.BirthPlace)

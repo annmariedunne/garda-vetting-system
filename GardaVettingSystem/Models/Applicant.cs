@@ -35,6 +35,7 @@ namespace GardaVettingSystem.Models
         public string Gender { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Date of Birth is required")]
+        [Display(Name = "Date of birth")]
         public DateTimeOffset? DateOfBirth { get; set; }
 
         [StringLength(50, ErrorMessage = "Birth place cannot exceed 50 characters")]

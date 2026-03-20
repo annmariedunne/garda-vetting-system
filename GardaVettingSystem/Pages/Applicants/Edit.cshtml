@@ -15,11 +15,6 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Applicant.ApplicantNumber" />
             <div class="form-group">
-                <label asp-for="Applicant.UserId" class="control-label"></label>
-                <input asp-for="Applicant.UserId" class="form-control" />
-                <span asp-validation-for="Applicant.UserId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
 <span class="text-danger">*</span>
                 <label asp-for="Applicant.FirstName" class="control-label"></label>
                 <input asp-for="Applicant.FirstName" class="form-control" aria-required="true"/>
@@ -44,13 +39,20 @@
             <div class="form-group">
 <span class="text-danger">*</span>
                 <label asp-for="Applicant.Gender" class="control-label"></label>
-                <input asp-for="Applicant.Gender" class="form-control" aria-required="true"/>
+                <select asp-for="Applicant.Gender" class="form-control" aria-required="true">
+                    <option value="">-- Select Gender --</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Non-binary">Non-binary</option>
+                    <option value="Transgender">Transgender</option>
+                    <option value="Prefer not to say">Prefer not to say</option>
+                </select>
                 <span asp-validation-for="Applicant.Gender" class="text-danger"></span>
             </div>
             <div class="form-group">
 <span class="text-danger">*</span>
                 <label asp-for="Applicant.DateOfBirth" class="control-label"></label>
-                <input asp-for="Applicant.DateOfBirth" class="form-control" aria-required="true"/>
+                <input asp-for="Applicant.DateOfBirth" class="form-control" aria-required="true" value="@Model.Applicant.DateOfBirth?.ToString("yyyy-MM-dd")" type="date" />
                 <span asp-validation-for="Applicant.DateOfBirth" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -58,7 +60,7 @@
                 <input asp-for="Applicant.BirthPlace" class="form-control" />
                 <span asp-validation-for="Applicant.BirthPlace" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group mt-3">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
