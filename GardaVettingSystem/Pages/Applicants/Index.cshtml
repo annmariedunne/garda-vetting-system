@@ -1,0 +1,78 @@
+﻿@page
+@model GardaVettingSystem.Pages.Applicants.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Applicant[0].UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Applicant[0].FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Applicant[0].LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Applicant[0].BirthLastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Applicant[0].MothersLastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Applicant[0].Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Applicant[0].DateOfBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Applicant[0].BirthPlace)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Applicant) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BirthLastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MothersLastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BirthPlace)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ApplicantNumber">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ApplicantNumber">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ApplicantNumber">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

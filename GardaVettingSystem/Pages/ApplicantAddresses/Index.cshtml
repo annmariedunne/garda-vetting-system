@@ -1,0 +1,66 @@
+﻿@page
+@model GardaVettingSystem.Pages.ApplicantAddresses.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ApplicantAddress[0].AddressLine)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApplicantAddress[0].Postcode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApplicantAddress[0].Country)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApplicantAddress[0].ResidentFrom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApplicantAddress[0].ResidentTo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApplicantAddress[0].Applicant)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.ApplicantAddress) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddressLine)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Postcode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Country)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ResidentFrom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ResidentTo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Applicant.FirstName)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.AddressId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.AddressId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.AddressId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
