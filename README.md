@@ -22,7 +22,7 @@ This project is a college project developed as part of the the Project Module at
 
 ## Project Status
 
-🚧 **In Development** — Initial development phase
+🚧 **In Development** — Core data models and Applicant registration flow implemented
 
 ### Completed
 - ✅ GitHub repository setup with branch protection and dev workflow
@@ -32,9 +32,11 @@ This project is a college project developed as part of the the Project Module at
 - ✅ Core domain models created: Applicant, ApplicantAddress, AccessCode
 - ✅ NUnit test project added with initial model tests
 - ✅ GitHub Actions CI/CD pipeline in progress
+- ✅ Secure user registration and authentication
+- ✅ Personal data storage (Applicant profile)
 
 ### In Progress
-- 🔄 Initial database migration
+- 🔄 Address management (in progress)
 - 🔄 GitHub Actions CI/CD pipeline
 
 ## Documentation Project Timeline

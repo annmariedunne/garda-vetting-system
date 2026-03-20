@@ -1,0 +1,75 @@
+﻿@page
+@model GardaVettingSystem.Pages.Applicants.CreateModel
+
+    @{
+    ViewData["Title"] = "Create";
+    }
+        
+    <h1>Create</h1>
+        
+    <h4>Applicant</h4>
+    <hr />
+    <div class="row">
+    <div class="col-md-4">
+    <form method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Applicant.FirstName" class="control-label"></label>
+                <input asp-for="Applicant.FirstName" class="form-control" aria-required="true"/>
+                <span asp-validation-for="Applicant.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Applicant.LastName" class="control-label"></label>
+                <input asp-for="Applicant.LastName" class="form-control" aria-required="true"/>
+                <span asp-validation-for="Applicant.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Applicant.BirthLastName" class="control-label"></label>
+                <input asp-for="Applicant.BirthLastName" class="form-control" />
+                <span asp-validation-for="Applicant.BirthLastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Applicant.MothersLastName" class="control-label"></label>
+                <input asp-for="Applicant.MothersLastName" class="form-control" />
+                <span asp-validation-for="Applicant.MothersLastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Applicant.Gender" class="control-label"></label>
+                <select asp-for="Applicant.Gender" class="form-control" aria-required="true">
+                    <option value="">-- Select Gender --</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Non-binary">Non-binary</option>
+                    <option value="Transgender">Transgender</option>
+                    <option value="Prefer not to say">Prefer not to say</option>
+                </select>
+                <span asp-validation-for="Applicant.Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Applicant.DateOfBirth" class="control-label"></label>
+                <input asp-for="Applicant.DateOfBirth" class="form-control" aria-required="true" type="date" />
+                <span asp-validation-for="Applicant.DateOfBirth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Applicant.BirthPlace" class="control-label"></label>
+                <input asp-for="Applicant.BirthPlace" class="form-control" />
+                <span asp-validation-for="Applicant.BirthPlace" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

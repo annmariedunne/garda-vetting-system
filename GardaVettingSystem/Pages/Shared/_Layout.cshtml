@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/GardaVettingSystem.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/bootstrap-icons/bootstrap-icons.css" />
 </head>
 <body>
     <header>
@@ -24,7 +25,7 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Student Info</a>
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />
@@ -40,13 +41,21 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2026 - GardaVettingSystem - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            &copy; 2026 - GardaVettingSystem - <a asp-area="" asp-page="/Privacy">Student Info</a>
         </div>
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <!-- Tooltip initialisation - called after Bootstrap JS loads -->
+    <script>
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        tooltipTriggerList.forEach(function (el) {
+            new bootstrap.Tooltip(el);
+        });
+    </script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>
