@@ -60,14 +60,15 @@
                 <span asp-validation-for="Applicant.BirthPlace" class="text-danger"></span>
             </div>
             <div class="form-group mt-3">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <button type="submit" class="btn btn-primary btn-sm">
+                    <i class="bi bi-plus-circle"></i> Create
+                </button>
+                <a asp-page="Index" class="btn btn-secondary btn-sm">
+                    <i class="bi bi-arrow-left"></i> Cancel
+                </a>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-page="Index">Back to List</a>
 </div>
 
 @section Scripts {

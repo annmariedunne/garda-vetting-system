@@ -12,10 +12,10 @@ namespace GardaVettingSystem.Pages.Applicants
     [Authorize]
     public class EditModel : PageModel
     {
-        private readonly GardaVettingSystem.Data.GardaVettingSystemDbContext _context;
+        private readonly GardaVettingSystemDbContext _context;
         private readonly UserManager<IdentityUser> _userManager;
 
-        public EditModel(GardaVettingSystem.Data.GardaVettingSystemDbContext context, UserManager<IdentityUser> userManager)
+        public EditModel(GardaVettingSystemDbContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
             _userManager = userManager;
@@ -28,13 +28,16 @@ namespace GardaVettingSystem.Pages.Applicants
         {
             if (id == null)
             {
-                return NotFound();
+                return RedirectToPage("/Applicants/Index");
             }
 
-            var applicant =  await _context.Applicants.FirstOrDefaultAsync(m => m.ApplicantNumber == id);
+            string? userId = _userManager.GetUserId(User);
+            Applicant? applicant = await _context.Applicants
+                .FirstOrDefaultAsync(m => m.ApplicantNumber == id && m.UserId == userId);
+
             if (applicant == null)
             {
-                return NotFound();
+                return RedirectToPage("/Applicants/Index");
             }
             Applicant = applicant;
             return Page();
@@ -44,7 +47,18 @@ namespace GardaVettingSystem.Pages.Applicants
         // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            Applicant.UserId = _userManager.GetUserId(User) ?? string.Empty;
+            string? userId = _userManager.GetUserId(User);
+            Applicant.UserId = userId ?? string.Empty;
+
+            // Verify the logged-in user owns this record
+            Applicant? existing = await _context.Applicants
+                .FirstOrDefaultAsync(a => a.ApplicantNumber == Applicant.ApplicantNumber && a.UserId == userId);
+
+            if (existing == null)
+            {
+                return RedirectToPage("/Applicants/Index");
+            }
+
             if (!ModelState.IsValid)
             {
                 return Page();
@@ -68,7 +82,7 @@ namespace GardaVettingSystem.Pages.Applicants
                 }
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Details", new { id = Applicant.ApplicantNumber });
         }
 
         private bool ApplicantExists(int id)

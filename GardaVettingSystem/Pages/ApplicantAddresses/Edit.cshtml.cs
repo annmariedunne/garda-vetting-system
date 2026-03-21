@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -13,9 +9,9 @@ namespace GardaVettingSystem.Pages.ApplicantAddresses
 {
     public class EditModel : PageModel
     {
-        private readonly GardaVettingSystem.Data.GardaVettingSystemDbContext _context;
+        private readonly GardaVettingSystemDbContext _context;
 
-        public EditModel(GardaVettingSystem.Data.GardaVettingSystemDbContext context)
+        public EditModel(GardaVettingSystemDbContext context)
         {
             _context = context;
         }

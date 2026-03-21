@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using GardaVettingSystem.Data;
@@ -12,9 +8,9 @@ namespace GardaVettingSystem.Pages.AccessCodes
 {
     public class DeleteModel : PageModel
     {
-        private readonly GardaVettingSystem.Data.GardaVettingSystemDbContext _context;
+        private readonly GardaVettingSystemDbContext _context;
 
-        public DeleteModel(GardaVettingSystem.Data.GardaVettingSystemDbContext context)
+        public DeleteModel(GardaVettingSystemDbContext context)
         {
             _context = context;
         }

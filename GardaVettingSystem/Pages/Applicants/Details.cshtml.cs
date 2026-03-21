@@ -1,22 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using GardaVettingSystem.Data;
 using GardaVettingSystem.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace GardaVettingSystem.Pages.Applicants
 {
+    [Authorize]
     public class DetailsModel : PageModel
     {
-        private readonly GardaVettingSystem.Data.GardaVettingSystemDbContext _context;
+        private readonly GardaVettingSystemDbContext _context;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public DetailsModel(GardaVettingSystem.Data.GardaVettingSystemDbContext context)
+        public DetailsModel(GardaVettingSystemDbContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         public Applicant Applicant { get; set; } = default!;
@@ -28,7 +30,9 @@ namespace GardaVettingSystem.Pages.Applicants
                 return NotFound();
             }
 
-            var applicant = await _context.Applicants.FirstOrDefaultAsync(m => m.ApplicantNumber == id);
+            string? userId = _userManager.GetUserId(User);
+            Applicant? applicant = await _context.Applicants
+                .FirstOrDefaultAsync(m => m.ApplicantNumber == id && m.UserId == userId);
 
             if (applicant is not null)
             {
@@ -37,7 +41,8 @@ namespace GardaVettingSystem.Pages.Applicants
                 return Page();
             }
 
-            return NotFound();
+            // Record not found or doesn't belong to this user - redirect to their own profile
+            return RedirectToPage("/Applicants/Index");
         }
     }
 }

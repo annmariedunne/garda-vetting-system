@@ -1,22 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using GardaVettingSystem.Data;
 using GardaVettingSystem.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace GardaVettingSystem.Pages.Applicants
 {
+    [Authorize]
     public class DeleteModel : PageModel
     {
-        private readonly GardaVettingSystem.Data.GardaVettingSystemDbContext _context;
+        private readonly GardaVettingSystemDbContext _context;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public DeleteModel(GardaVettingSystem.Data.GardaVettingSystemDbContext context)
+        public DeleteModel(GardaVettingSystemDbContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         [BindProperty]
@@ -26,10 +27,12 @@ namespace GardaVettingSystem.Pages.Applicants
         {
             if (id == null)
             {
-                return NotFound();
+                return RedirectToPage("/Applicants/Index");
             }
 
-            var applicant = await _context.Applicants.FirstOrDefaultAsync(m => m.ApplicantNumber == id);
+            string? userId = _userManager.GetUserId(User);
+            Applicant? applicant = await _context.Applicants
+                .FirstOrDefaultAsync(m => m.ApplicantNumber == id && m.UserId == userId);
 
             if (applicant is not null)
             {
@@ -38,17 +41,20 @@ namespace GardaVettingSystem.Pages.Applicants
                 return Page();
             }
 
-            return NotFound();
+            return RedirectToPage("/Applicants/Index");
         }
 
         public async Task<IActionResult> OnPostAsync(int? id)
         {
             if (id == null)
             {
-                return NotFound();
+                return RedirectToPage("/Applicants/Index");
             }
 
-            var applicant = await _context.Applicants.FindAsync(id);
+            string? userId = _userManager.GetUserId(User);
+            Applicant? applicant = await _context.Applicants
+                .FirstOrDefaultAsync(m => m.ApplicantNumber == id && m.UserId == userId);
+
             if (applicant != null)
             {
                 Applicant = applicant;
@@ -56,7 +62,7 @@ namespace GardaVettingSystem.Pages.Applicants
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/Index");
         }
     }
 }
