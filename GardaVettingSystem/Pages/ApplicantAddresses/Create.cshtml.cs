@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using GardaVettingSystem.Data;
@@ -12,9 +8,9 @@ namespace GardaVettingSystem.Pages.ApplicantAddresses
 {
     public class CreateModel : PageModel
     {
-        private readonly GardaVettingSystem.Data.GardaVettingSystemDbContext _context;
+        private readonly GardaVettingSystemDbContext _context;
 
-        public CreateModel(GardaVettingSystem.Data.GardaVettingSystemDbContext context)
+        public CreateModel(GardaVettingSystemDbContext context)
         {
             _context = context;
         }

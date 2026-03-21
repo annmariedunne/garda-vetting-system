@@ -32,6 +32,7 @@ namespace GardaVettingSystem.Models
         public string MothersLastName { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Gender is required")]
+        [Display(Name = "Gender")]
         public string Gender { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Date of Birth is required")]
