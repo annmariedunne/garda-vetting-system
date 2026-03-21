@@ -29,14 +29,9 @@ namespace GardaVettingSystem.Pages
                 Applicant? existing = await _context.Applicants
                     .FirstOrDefaultAsync(a => a.UserId == userId);
 
-                if (existing == null)
-                {
-                    return RedirectToPage("/Applicants/Create");
-                }
-                else
-                {
-                    return RedirectToPage("/Applicants/Index", new { id = existing.ApplicantNumber });
-                }
+                return existing == null
+                    ? RedirectToPage("/Applicants/Create")
+                    : RedirectToPage("/Applicants/Index", new { id = existing.ApplicantNumber });
             }
 
             return Page();
