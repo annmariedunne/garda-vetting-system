@@ -7,6 +7,11 @@ obj/
 *.user
 *.suo
 .idea/
+**/TestResults/**
+**/*.lutconfig
+**/*.tmp
+/GardaVettingSystem/coverage.json
+/GardaVettingSystem/coveragereport
 
 # ASP.NET Core secrets (NEVER commit these)
 appsettings.Development.json
