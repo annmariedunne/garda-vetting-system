@@ -34,9 +34,13 @@ This project is a college project developed as part of the the Project Module at
 - ✅ GitHub Actions CI/CD pipeline in progress
 - ✅ Secure user registration and authentication
 - ✅ Personal data storage (Applicant profile)
+- ✅ ApplicantAddresses secured with ownership checks and wired to profile
+- ✅ Address history displayed on Applicant profile page
+- ✅ NUnit tests expanded — ApplicantAddress model and Applicant validation tests
+- ✅ Pull request template added
 
 ### In Progress
-- 🔄 Address management (in progress)
+- 🔄 AccessCode generation and validation (next)
 - 🔄 GitHub Actions CI/CD pipeline
 
 ## Documentation Project Timeline
@@ -44,7 +48,7 @@ This project is a college project developed as part of the the Project Module at
 | Milestone | Target Date | Status |
 |---|---|---|
 | Introduction Chapter | 22 March 2026 | ✅ |
-| Design Chapter | 19 April 2026 | |
+| Design Chapter | 19 April 2026 | ✅ |
 | Implementation Chapter | 3 May 2026 | |
 | Testing Chapter | 17 May 2026 | |
 | Final Submission | 20 May 2026 | |
