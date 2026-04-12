@@ -32,6 +32,7 @@ namespace GardaVettingSystem.Pages.Applicants
 
             string? userId = _userManager.GetUserId(User);
             Applicant? applicant = await _context.Applicants
+                .Include(a => a.ApplicantAddresses)
                 .FirstOrDefaultAsync(m => m.ApplicantNumber == id && m.UserId == userId);
 
             if (applicant is not null)
@@ -42,7 +43,7 @@ namespace GardaVettingSystem.Pages.Applicants
             }
 
             // Record not found or doesn't belong to this user - redirect to their own profile
-            return RedirectToPage("/Applicants/Index");
+            return RedirectToPage("/Applicants/Create");
         }
     }
 }

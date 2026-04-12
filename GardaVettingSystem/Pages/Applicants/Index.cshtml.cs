@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
-using GardaVettingSystem.Data;
+﻿using GardaVettingSystem.Data;
 using GardaVettingSystem.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
 namespace GardaVettingSystem.Pages.Applicants
 {
@@ -21,13 +22,16 @@ namespace GardaVettingSystem.Pages.Applicants
 
         public IList<Applicant> Applicant { get;set; } = default!;
 
-        public async Task OnGetAsync()
+        public async Task<IActionResult> OnGetAsync()
         {
             string? userId = _userManager.GetUserId(User);
+            var applicant = await _context.Applicants
+                .FirstOrDefaultAsync(a => a.UserId == userId);
 
-            Applicant = await _context.Applicants
-                .Where(a => a.UserId == userId)
-                .ToListAsync();
+            if (applicant == null)
+                return RedirectToPage("/Applicants/Create");
+
+            return RedirectToPage("/Applicants/Details", new { id = applicant.ApplicantNumber });
         }
     }
 }

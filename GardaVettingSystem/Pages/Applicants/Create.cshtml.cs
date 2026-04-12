@@ -20,7 +20,7 @@ namespace GardaVettingSystem.Pages.Applicants
             _userManager = userManager;
         }
 
-        public async Task<IActionResult> OnGet()
+        public async Task<IActionResult> OnGetAsync()
         {
             string? userId = _userManager.GetUserId(User);
 
@@ -62,7 +62,7 @@ namespace GardaVettingSystem.Pages.Applicants
             _context.Applicants.Add(Applicant);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Details", new { id = Applicant.ApplicantNumber });
         }
     }
 }

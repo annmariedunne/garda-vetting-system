@@ -55,12 +55,58 @@
         </dd>
     </dl>
 </div>
+<div class="mt-4">
+    <h4>Address History</h4>
+    <hr />
+    @if (Model.Applicant.ApplicantAddresses != null && Model.Applicant.ApplicantAddresses.Any())
+    {
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th>Address</th>
+                    <th>Postcode</th>
+                    <th>Country</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var address in Model.Applicant.ApplicantAddresses)
+                {
+                    <tr>
+                        <td>@address.AddressLine</td>
+                        <td>@address.Postcode</td>
+                        <td>@address.Country</td>
+                        <td>@address.ResidentFrom</td>
+                        <td>@(address.ResidentTo.HasValue? address.ResidentTo.ToString() : "Current")</td>
+                        <td>
+                            <a asp-page="/ApplicantAddresses/Edit" asp-route-id="@address.AddressId" class="btn btn-primary btn-sm">
+                                <i class="bi bi-pencil-fill"></i>
+                            </a>
+                            <a asp-page="/ApplicantAddresses/Delete" asp-route-id="@address.AddressId" class="btn btn-danger btn-sm">
+                                <i class="bi bi-trash-fill"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p class="text-muted">No addresses added yet.</p>
+    }
+</div>
 <div>
     <a asp-page="/Applicants/Index" class="btn btn-secondary btn-sm">
         <i class="bi bi-house-fill"></i> Home
     </a>
     <a asp-page="./Edit" asp-route-id="@Model.Applicant.ApplicantNumber" class="btn btn-primary btn-sm">
         <i class="bi bi-pencil-fill"></i> Edit
+    </a>
+    <a asp-page="/ApplicantAddresses/Create" class="btn btn-success btn-sm">
+        <i class="bi bi-plus-circle-fill"></i> Add Address
     </a>
     <a asp-page="./Delete" asp-route-id="@Model.Applicant.ApplicantNumber" class="btn btn-danger btn-sm">
         <i class="bi bi-trash-fill"></i> Delete

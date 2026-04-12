@@ -1,19 +1,25 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using GardaVettingSystem.Data;
 using GardaVettingSystem.Models;
 
 namespace GardaVettingSystem.Pages.ApplicantAddresses
 {
+    [Authorize]
     public class EditModel : PageModel
     {
         private readonly GardaVettingSystemDbContext _context;
+        private readonly UserManager<IdentityUser> _userManager;
+        private const string ApplicantsDetailsPage = "/Applicants/Details";
+        private const string ApplicantsCreatePage = "/Applicants/Create";
 
-        public EditModel(GardaVettingSystemDbContext context)
+        public EditModel(GardaVettingSystemDbContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         [BindProperty]
@@ -22,28 +28,46 @@ namespace GardaVettingSystem.Pages.ApplicantAddresses
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
-            {
-                return NotFound();
-            }
+                return RedirectToPage(ApplicantsDetailsPage);
 
-            var applicantaddress =  await _context.ApplicantAddresses.FirstOrDefaultAsync(m => m.AddressId == id);
-            if (applicantaddress == null)
-            {
-                return NotFound();
-            }
-            ApplicantAddress = applicantaddress;
-           ViewData["ApplicantNumber"] = new SelectList(_context.Applicants, "ApplicantNumber", "FirstName");
+            var userId = _userManager.GetUserId(User);
+            var applicant = await _context.Applicants
+                .FirstOrDefaultAsync(a => a.UserId == userId);
+
+            if (applicant == null)
+                return RedirectToPage(ApplicantsCreatePage);
+
+            var address = await _context.ApplicantAddresses
+                .FirstOrDefaultAsync(a => a.AddressId == id && a.ApplicantNumber == applicant.ApplicantNumber);
+
+            if (address == null)
+                return RedirectToPage(ApplicantsDetailsPage, new { id = applicant.ApplicantNumber });
+
+            ApplicantAddress = address;
             return Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
+            var userId = _userManager.GetUserId(User);
+            var applicant = await _context.Applicants
+                .FirstOrDefaultAsync(a => a.UserId == userId);
+
+            if (applicant == null)
+                return RedirectToPage(ApplicantsCreatePage);
+
+            // Verify ownership
+            var existing = await _context.ApplicantAddresses
+                .FirstOrDefaultAsync(a => a.AddressId == ApplicantAddress.AddressId && a.ApplicantNumber == applicant.ApplicantNumber);
+
+            if (existing == null)
+                return RedirectToPage(ApplicantsDetailsPage, new { id = applicant.ApplicantNumber });
+
+            ModelState.Remove("ApplicantAddress.ApplicantNumber");
+            ApplicantAddress.ApplicantNumber = applicant.ApplicantNumber;
+
             if (!ModelState.IsValid)
-            {
                 return Page();
-            }
 
             _context.Attach(ApplicantAddress).State = EntityState.Modified;
 
@@ -53,22 +77,13 @@ namespace GardaVettingSystem.Pages.ApplicantAddresses
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ApplicantAddressExists(ApplicantAddress.AddressId))
-                {
+                if (!await _context.ApplicantAddresses.AnyAsync(e => e.AddressId == ApplicantAddress.AddressId))
                     return NotFound();
-                }
                 else
-                {
                     throw;
-                }
             }
 
-            return RedirectToPage("./Index");
-        }
-
-        private bool ApplicantAddressExists(int id)
-        {
-            return _context.ApplicantAddresses.Any(e => e.AddressId == id);
+            return RedirectToPage(ApplicantsDetailsPage, new { id = applicant.ApplicantNumber });
         }
     }
 }

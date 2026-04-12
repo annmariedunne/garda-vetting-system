@@ -14,6 +14,7 @@ namespace GardaVettingSystem.Pages.Applicants
     {
         private readonly GardaVettingSystemDbContext _context;
         private readonly UserManager<IdentityUser> _userManager;
+        private const string ApplicantsCreatePage = "/Applicants/Create";
 
         public EditModel(GardaVettingSystemDbContext context, UserManager<IdentityUser> userManager)
         {
@@ -28,7 +29,7 @@ namespace GardaVettingSystem.Pages.Applicants
         {
             if (id == null)
             {
-                return RedirectToPage("/Applicants/Index");
+                return RedirectToPage(ApplicantsCreatePage);
             }
 
             string? userId = _userManager.GetUserId(User);
@@ -37,7 +38,7 @@ namespace GardaVettingSystem.Pages.Applicants
 
             if (applicant == null)
             {
-                return RedirectToPage("/Applicants/Index");
+                return RedirectToPage(ApplicantsCreatePage);
             }
             Applicant = applicant;
             return Page();
@@ -56,7 +57,7 @@ namespace GardaVettingSystem.Pages.Applicants
 
             if (existing == null)
             {
-                return RedirectToPage("/Applicants/Index");
+                return RedirectToPage(ApplicantsCreatePage);
             }
 
             if (!ModelState.IsValid)
@@ -72,7 +73,7 @@ namespace GardaVettingSystem.Pages.Applicants
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ApplicantExists(Applicant.ApplicantNumber))
+                if (!await ApplicantExistsAsync(Applicant.ApplicantNumber))
                 {
                     return NotFound();
                 }
@@ -85,9 +86,9 @@ namespace GardaVettingSystem.Pages.Applicants
             return RedirectToPage("./Details", new { id = Applicant.ApplicantNumber });
         }
 
-        private bool ApplicantExists(int id)
+        private async Task<bool> ApplicantExistsAsync(int id)
         {
-            return _context.Applicants.Any(e => e.ApplicantNumber == id);
+            return await _context.Applicants.AnyAsync(e => e.ApplicantNumber == id);
         }
     }
 }

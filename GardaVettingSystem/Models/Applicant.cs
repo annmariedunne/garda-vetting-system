@@ -24,7 +24,7 @@ namespace GardaVettingSystem.Models
         public string FullName => $"{FirstName} {LastName}";
 
         [StringLength(50, ErrorMessage = "Birth surname name cannot exceed 50 characters")]
-        [Display(Name = "Surname name at birth")]
+        [Display(Name = "Surname at birth")]
         public string BirthLastName { get; set; } = string.Empty;
 
         [StringLength(50, ErrorMessage = "Mother's last name cannot exceed 50 characters")]
@@ -43,7 +43,8 @@ namespace GardaVettingSystem.Models
         [Display(Name = "Place of birth")]
         public string BirthPlace { get; set; } = string.Empty;
 
-
+        // Navigation property - an applicant can have multiple addresses
+        public ICollection<ApplicantAddress> ApplicantAddresses { get; set; } = new List<ApplicantAddress>();
     }
 
 }

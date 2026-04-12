@@ -13,6 +13,7 @@ namespace GardaVettingSystem.Pages.Applicants
     {
         private readonly GardaVettingSystemDbContext _context;
         private readonly UserManager<IdentityUser> _userManager;
+        private const string ApplicantsCreatePage = "/Applicants/Create";
 
         public DeleteModel(GardaVettingSystemDbContext context, UserManager<IdentityUser> userManager)
         {
@@ -27,7 +28,7 @@ namespace GardaVettingSystem.Pages.Applicants
         {
             if (id == null)
             {
-                return RedirectToPage("/Applicants/Index");
+                return RedirectToPage(ApplicantsCreatePage);
             }
 
             string? userId = _userManager.GetUserId(User);
@@ -41,14 +42,14 @@ namespace GardaVettingSystem.Pages.Applicants
                 return Page();
             }
 
-            return RedirectToPage("/Applicants/Index");
+            return RedirectToPage(ApplicantsCreatePage);
         }
 
         public async Task<IActionResult> OnPostAsync(int? id)
         {
             if (id == null)
             {
-                return RedirectToPage("/Applicants/Index");
+                return RedirectToPage(ApplicantsCreatePage);
             }
 
             string? userId = _userManager.GetUserId(User);
