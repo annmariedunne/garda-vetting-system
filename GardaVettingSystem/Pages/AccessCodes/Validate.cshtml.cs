@@ -7,11 +7,11 @@ using GardaVettingSystem.Models;
 
 namespace GardaVettingSystem.Pages.AccessCodes
 {
-    public class EditModel : PageModel
+    public class ValidateModel : PageModel
     {
         private readonly GardaVettingSystemDbContext _context;
 
-        public EditModel(GardaVettingSystemDbContext context)
+        public ValidateModel(GardaVettingSystemDbContext context)
         {
             _context = context;
         }

@@ -45,6 +45,7 @@ namespace GardaVettingSystem.Models
 
         // Navigation property - an applicant can have multiple addresses
         public ICollection<ApplicantAddress> ApplicantAddresses { get; set; } = new List<ApplicantAddress>();
+        public ICollection<AccessCode> AccessCodes { get; set; } = new List<AccessCode>();
     }
 
 }

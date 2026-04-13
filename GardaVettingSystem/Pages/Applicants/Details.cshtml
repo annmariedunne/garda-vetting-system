@@ -9,6 +9,11 @@
 
 <div>
     <h4>Applicant</h4>
+    <div>
+        <a asp-page="./Edit" asp-route-id="@Model.Applicant.ApplicantNumber" class="btn btn-primary btn-sm">
+            <i class="bi bi-pencil-fill"></i> Edit
+        </a>
+    </div>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -57,6 +62,11 @@
 </div>
 <div class="mt-4">
     <h4>Address History</h4>
+    <div>
+        <a asp-page="/ApplicantAddresses/Create" class="btn btn-success btn-sm">
+            <i class="bi bi-plus-circle-fill"></i> Add Address
+        </a>
+    </div>
     <hr />
     @if (Model.Applicant.ApplicantAddresses != null && Model.Applicant.ApplicantAddresses.Any())
     {
@@ -98,17 +108,69 @@
         <p class="text-muted">No addresses added yet.</p>
     }
 </div>
+<div class="mt-4">
+    <h4>Access Codes</h4>
+    <div>
+        <a asp-page="/AccessCodes/Create" class="btn btn-info btn-sm">
+            <i class="bi bi-key-fill"></i> Generate Access Code
+        </a>
+    </div>
+    <hr />
+    @if (Model.Applicant.AccessCodes != null && Model.Applicant.AccessCodes.Any())
+    {
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Organisation</th>
+                    <th>Created</th>
+                    <th>Expires</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var code in Model.Applicant.AccessCodes)
+                {
+                    <tr>
+                        <td><strong>@code.Code</strong></td>
+                        <td>@code.OrganisationName</td>
+                        <td>@code.CreatedDate.ToString("d")</td>
+                        <td>@(code.ExpiryDate.HasValue? code.ExpiryDate.Value.ToString("d") : "No expiry")</td>
+                        <td>
+                            @if (!code.IsActive)
+                            {
+                                <span class="badge bg-secondary">Revoked</span>
+                            }
+                            else if (code.ExpiryDate.HasValue && code.ExpiryDate.Value < DateTimeOffset.UtcNow)
+                            {
+                                <span class="badge bg-warning text-dark">Expired</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-success">Active</span>
+                            }
+                        </td>
+                        <td>
+                            @if (code.IsActive && (!code.ExpiryDate.HasValue || code.ExpiryDate.Value > DateTimeOffset.UtcNow))
+                            {
+                                <a asp-page="/AccessCodes/Delete" asp-route-id="@code.AccessCodeId" class="btn btn-danger btn-sm">
+                                    <i class="bi bi-x-circle-fill"></i> Revoke
+                                </a>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p class="text-muted">No access codes generated yet.</p>
+    }
+</div>
 <div>
-    <a asp-page="/Applicants/Index" class="btn btn-secondary btn-sm">
-        <i class="bi bi-house-fill"></i> Home
-    </a>
-    <a asp-page="./Edit" asp-route-id="@Model.Applicant.ApplicantNumber" class="btn btn-primary btn-sm">
-        <i class="bi bi-pencil-fill"></i> Edit
-    </a>
-    <a asp-page="/ApplicantAddresses/Create" class="btn btn-success btn-sm">
-        <i class="bi bi-plus-circle-fill"></i> Add Address
-    </a>
     <a asp-page="./Delete" asp-route-id="@Model.Applicant.ApplicantNumber" class="btn btn-danger btn-sm">
-        <i class="bi bi-trash-fill"></i> Delete
+        <i class="bi bi-trash-fill"></i> Delete My Profile
     </a>
 </div>
