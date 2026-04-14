@@ -20,7 +20,9 @@ namespace GardaVettingSystem.Pages.Applicants
         private readonly GardaVettingSystemDbContext _context;
         private readonly UserManager<IdentityUser> _userManager;
 
-        /// <summary>Route constant for the Applicants Create page.</summary>
+        /// <summary>
+        /// Route constant for the Applicants Create page.
+        /// </summary>
         private const string ApplicantsCreatePage = "/Applicants/Create";
 
         /// <summary>
@@ -34,7 +36,9 @@ namespace GardaVettingSystem.Pages.Applicants
             _userManager = userManager;
         }
 
-        /// <summary>The applicant profile being edited, bound from the form post.</summary>
+        /// <summary>
+        /// The applicant profile being edited, bound from the form post.
+        /// </summary>
         [BindProperty]
         public Applicant Applicant { get; set; } = default!;
 

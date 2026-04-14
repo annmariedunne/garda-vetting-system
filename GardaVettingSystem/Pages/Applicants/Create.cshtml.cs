@@ -30,7 +30,9 @@ namespace GardaVettingSystem.Pages.Applicants
             _userManager = userManager;
         }
 
-        /// <summary>The applicant profile being created, bound from the form post.</summary>
+        /// <summary>
+        /// The applicant profile being created, bound from the form post.
+        /// </summary>
         [BindProperty]
         public Applicant Applicant { get; set; } = default!;
 

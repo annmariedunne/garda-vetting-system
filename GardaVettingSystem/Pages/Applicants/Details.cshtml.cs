@@ -31,7 +31,9 @@ namespace GardaVettingSystem.Pages.Applicants
             _userManager = userManager;
         }
 
-        /// <summary>The applicant profile to display, including addresses and access codes.</summary>
+        /// <summary>
+        /// The applicant profile to display, including addresses and access codes.
+        /// </summary>
         public Applicant Applicant { get; set; } = default!;
 
         /// <summary>

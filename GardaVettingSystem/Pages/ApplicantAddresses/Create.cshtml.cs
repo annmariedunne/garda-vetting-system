@@ -30,11 +30,15 @@ namespace GardaVettingSystem.Pages.ApplicantAddresses
             _userManager = userManager;
         }
 
-        /// <summary>The applicant number of the logged-in user, used to populate the Cancel back link.</summary>
+        /// <summary>
+        /// The applicant number of the logged-in user, used to populate the Cancel back link.
+        /// </summary>
         [BindProperty]
         public int ApplicantNumber { get; set; }
 
-        /// <summary>The address being created, bound from the form post.</summary>
+        /// <summary>
+        /// The address being created, bound from the form post.
+        /// </summary>
         [BindProperty]
         public ApplicantAddress ApplicantAddress { get; set; } = new();
 

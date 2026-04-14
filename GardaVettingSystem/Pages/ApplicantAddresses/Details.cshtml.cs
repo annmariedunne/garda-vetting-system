@@ -23,7 +23,9 @@ namespace GardaVettingSystem.Pages.ApplicantAddresses
             _context = context;
         }
 
-        /// <summary>The address to display.</summary>
+        /// <summary>
+        /// The address to display.
+        /// </summary>
         public ApplicantAddress ApplicantAddress { get; set; } = default!;
 
         /// <summary>

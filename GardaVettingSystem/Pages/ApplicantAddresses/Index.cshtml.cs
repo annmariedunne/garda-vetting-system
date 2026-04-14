@@ -22,7 +22,9 @@ namespace GardaVettingSystem.Pages.ApplicantAddresses
             _context = context;
         }
 
-        /// <summary>The list of all applicant addresses.</summary>
+        /// <summary>
+        /// The list of all applicant addresses.
+        /// </summary>
         public IList<ApplicantAddress> ApplicantAddress { get;set; } = default!;
 
         /// <summary>

@@ -32,7 +32,9 @@ namespace GardaVettingSystem.Pages.AccessCodes
             _userManager = userManager;
         }
 
-        /// <summary>The access code to be revoked, bound from the form post.</summary>
+        /// <summary>
+        /// The access code to be revoked, bound from the form post.
+        /// </summary>
         [BindProperty]
         public AccessCode AccessCode { get; set; } = default!;
 

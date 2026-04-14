@@ -6,17 +6,33 @@ using GardaVettingSystem.Models;
 
 namespace GardaVettingSystem.Pages.AccessCodes
 {
+    /// <summary>
+    /// Displays the details of a single access code.
+    /// Not part of the main user flow — retained as a scaffolded page for potential future use.
+    /// </summary>
     public class DetailsModel : PageModel
     {
         private readonly GardaVettingSystemDbContext _context;
 
+        /// <summary>
+        /// Initialises a new instance of <see cref="DetailsModel"/> with the required services.
+        /// </summary>
+        /// <param name="context">The database context.</param>
         public DetailsModel(GardaVettingSystemDbContext context)
         {
             _context = context;
         }
 
+        /// <summary>
+        /// The access code to display.
+        /// </summary>
         public AccessCode AccessCode { get; set; } = default!;
 
+        /// <summary>
+        /// Handles GET requests. Loads a single access code by its ID.
+        /// </summary>
+        /// <param name="id">The AccessCodeId to display.</param>
+        /// <returns>The Details page, or NotFound if the access code does not exist.</returns>
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)

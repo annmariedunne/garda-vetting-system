@@ -30,7 +30,9 @@ namespace GardaVettingSystem.Pages.Applicants
             _userManager = userManager;
         }
 
-        /// <summary>Not used — Index does not render a list view.</summary>
+        /// <summary>
+        /// Not used — Index does not render a list view.
+        /// </summary>
         public IList<Applicant> Applicant { get;set; } = default!;
 
         /// <summary>

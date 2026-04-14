@@ -7,18 +7,36 @@ using GardaVettingSystem.Models;
 
 namespace GardaVettingSystem.Pages.AccessCodes
 {
+    /// <summary>
+    /// Handles validation of an access code entered by an organisation.
+    /// Allows an organisation to verify a code and view the associated applicant's vetting data.
+    /// </summary>
+    /// <remarks>
+    /// This page is not yet fully implemented — currently retains the scaffolded Edit structure
+    /// and will be reworked as part of the organisation-side validation feature.
+    /// </remarks>
     public class ValidateModel : PageModel
     {
         private readonly GardaVettingSystemDbContext _context;
 
+        /// <summary>
+        /// Initialises a new instance of <see cref="ValidateModel"/> with the required services.
+        /// </summary>
+        /// <param name="context">The database context.</param>
         public ValidateModel(GardaVettingSystemDbContext context)
         {
             _context = context;
         }
 
+        /// <summary>The access code being validated, bound from the form post.</summary>
         [BindProperty]
         public AccessCode AccessCode { get; set; } = default!;
 
+        /// <summary>
+        /// Handles GET requests. Loads an access code by ID for validation.
+        /// </summary>
+        /// <param name="id">The AccessCodeId to load.</param>
+        /// <returns>The Validate page, or NotFound if the access code does not exist.</returns>
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
@@ -36,8 +54,11 @@ namespace GardaVettingSystem.Pages.AccessCodes
             return Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more information, see https://aka.ms/RazorPagesCRUD.
+        /// <summary>
+        /// Handles POST requests. Placeholder — to be fully implemented as part of
+        /// the organisation-side validation feature.
+        /// </summary>
+        /// <returns>A redirect to the Index page on success.</returns>
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)

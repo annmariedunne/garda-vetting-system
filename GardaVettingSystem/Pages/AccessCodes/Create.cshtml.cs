@@ -19,10 +19,14 @@ namespace GardaVettingSystem.Pages.AccessCodes
         private readonly GardaVettingSystemDbContext _context;
         private readonly UserManager<IdentityUser> _userManager;
 
-        /// <summary>Route constant for the Applicants Details page.</summary>
+        /// <summary>
+        /// Route constant for the Applicants Details page.
+        /// </summary>
         private const string ApplicantsDetailsPage = "/Applicants/Details";
 
-        /// <summary>Route constant for the Applicants Create page.</summary>
+        /// <summary>
+        /// Route constant for the Applicants Create page.
+        /// </summary>
         private const string ApplicantsCreatePage = "/Applicants/Create";
 
         /// <summary>
@@ -36,7 +40,9 @@ namespace GardaVettingSystem.Pages.AccessCodes
             _userManager = userManager;
         }
 
-        /// <summary>The access code being created, bound from the form post.</summary>
+        /// <summary>
+        /// The access code being created, bound from the form post.
+        /// </summary>
         [BindProperty]
         public AccessCode AccessCode { get; set; } = new();
 
