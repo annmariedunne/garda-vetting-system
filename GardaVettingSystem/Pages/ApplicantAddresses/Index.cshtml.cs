@@ -25,6 +25,7 @@ namespace GardaVettingSystem.Pages.ApplicantAddresses
         /// <summary>
         /// The list of all applicant addresses.
         /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA2227:Collection properties should be read only", Justification = "Required for Razor Pages model binding in scaffolded Index page.")]
         public IList<ApplicantAddress> ApplicantAddress { get;set; } = default!;
 
         /// <summary>

@@ -6,6 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+	<AnalysisLevel>latest-all</AnalysisLevel>
     <UserSecretsId>aspnet-GardaVettingSystem-f936ba6b-6daa-4ca5-b483-1e9b48af8b50</UserSecretsId>
   </PropertyGroup>
 

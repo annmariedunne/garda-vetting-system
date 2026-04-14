@@ -30,6 +30,8 @@ csharp_new_line_before_finally = true
 csharp_new_line_before_members_in_object_initializers = true
 csharp_new_line_before_members_in_anonymous_types = true
 csharp_new_line_between_query_expression_clauses = true
+dotnet_diagnostic.CA1515.severity = none
+dotnet_diagnostic.CA2007.severity = none
 
 # Indentation preferences
 csharp_indent_block_contents = true
@@ -203,3 +205,5 @@ end_of_line = crlf
 # Suppress XML doc warnings for auto-generated EF Core migration files
 [**/Migrations/*.cs]
 dotnet_diagnostic.CS1591.severity = none
+dotnet_diagnostic.CA1515.severity = none
+dotnet_diagnostic.CA1062.severity = none

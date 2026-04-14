@@ -25,6 +25,7 @@ namespace GardaVettingSystem.Pages.AccessCodes
         /// <summary>
         /// The list of all access codes.
         /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA2227:Collection properties should be read only", Justification = "Required for Razor Pages model binding in scaffolded Index page.")]
         public IList<AccessCode> AccessCode { get;set; } = default!;
 
         /// <summary>
