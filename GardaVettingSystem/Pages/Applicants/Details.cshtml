@@ -70,7 +70,7 @@
     <hr />
     @if (Model.Applicant.ApplicantAddresses != null && Model.Applicant.ApplicantAddresses.Any())
     {
-        <table class="table table-sm">
+        <table class="table table-sm align-middle">
             <thead>
                 <tr>
                     <th>Address</th>
@@ -90,7 +90,7 @@
                         <td>@address.Country</td>
                         <td>@address.ResidentFrom</td>
                         <td>@(address.ResidentTo.HasValue? address.ResidentTo.ToString() : "Current")</td>
-                        <td>
+                        <td class="align-middle">
                             <a asp-page="/ApplicantAddresses/Edit" asp-route-id="@address.AddressId" class="btn btn-primary btn-sm">
                                 <i class="bi bi-pencil-fill"></i>
                             </a>
@@ -118,7 +118,7 @@
     <hr />
     @if (Model.Applicant.AccessCodes != null && Model.Applicant.AccessCodes.Any())
     {
-        <table class="table table-sm">
+        <table class="table table-sm align-middle">
             <thead>
                 <tr>
                     <th>Code</th>
@@ -137,21 +137,21 @@
                         <td>@code.OrganisationName</td>
                         <td>@code.CreatedDate.ToString("d")</td>
                         <td>@(code.ExpiryDate.HasValue? code.ExpiryDate.Value.ToString("d") : "No expiry")</td>
-                        <td>
+                        <td class="align-middle">
                             @if (!code.IsActive)
                             {
                                 <span class="badge bg-secondary">Revoked</span>
                             }
                             else if (code.ExpiryDate.HasValue && code.ExpiryDate.Value < DateTimeOffset.UtcNow)
                             {
-                                <span class="badge bg-warning text-dark">Expired</span>
+                                <span class="badge bg-warning text-white">Expired</span>
                             }
                             else
                             {
                                 <span class="badge bg-success">Active</span>
                             }
                         </td>
-                        <td>
+                        <td class="align-middle">
                             @if (code.IsActive && (!code.ExpiryDate.HasValue || code.ExpiryDate.Value > DateTimeOffset.UtcNow))
                             {
                                 <a asp-page="/AccessCodes/Delete" asp-route-id="@code.AccessCodeId" class="btn btn-danger btn-sm">

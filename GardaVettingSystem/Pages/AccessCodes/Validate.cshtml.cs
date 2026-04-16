@@ -9,12 +9,10 @@ namespace GardaVettingSystem.Pages.AccessCodes
 {
     /// <summary>
     /// Handles validation of an access code entered by an organisation.
-    /// Allows an organisation to verify a code and view the associated applicant's vetting data.
+    /// This is a public page — no authentication is required.
+    /// An organisation enters a code to view the associated applicant's vetting data,
+    /// provided the code is active and has not expired.
     /// </summary>
-    /// <remarks>
-    /// This page is not yet fully implemented — currently retains the scaffolded Edit structure
-    /// and will be reworked as part of the organisation-side validation feature.
-    /// </remarks>
     public class ValidateModel : PageModel
     {
         private readonly GardaVettingSystemDbContext _context;
@@ -28,68 +26,75 @@ namespace GardaVettingSystem.Pages.AccessCodes
             _context = context;
         }
 
-        /// <summary>The access code being validated, bound from the form post.</summary>
+        /// <summary>
+        /// The access code being validated, bound from the form post.
+        /// </summary>
         [BindProperty]
-        public AccessCode AccessCode { get; set; } = default!;
+        public string EnteredCode { get; set; } = string.Empty;
 
         /// <summary>
-        /// Handles GET requests. Loads an access code by ID for validation.
+        /// The applicant profile returned when a valid code is found.
+        /// Null if no valid code was found.
         /// </summary>
-        /// <param name="id">The AccessCodeId to load.</param>
-        /// <returns>The Validate page, or NotFound if the access code does not exist.</returns>
-        public async Task<IActionResult> OnGetAsync(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+        public Applicant? FoundApplicant { get; set; }
 
-            var accesscode =  await _context.AccessCodes.FirstOrDefaultAsync(m => m.AccessCodeId == id);
-            if (accesscode == null)
-            {
-                return NotFound();
-            }
-            AccessCode = accesscode;
-           ViewData["ApplicantNumber"] = new SelectList(_context.Applicants, "ApplicantNumber", "FirstName");
+        /// <summary>
+        /// An error message to display when the code is invalid, expired or revoked.
+        /// Null if no error occurred.
+        /// </summary>
+        public string? ErrorMessage { get; set; }
+
+        /// <summary>
+        /// Handles GET requests. Renders the code entry form.
+        /// </summary>
+        /// <returns>The Validate page.</returns>
+        public IActionResult OnGet()
+        {
             return Page();
         }
 
         /// <summary>
-        /// Handles POST requests. Placeholder — to be fully implemented as part of
-        /// the organisation-side validation feature.
+        /// Handles POST requests. Looks up the entered code and returns the associated
+        /// applicant's data if the code is valid, active and not expired.
         /// </summary>
-        /// <returns>A redirect to the Index page on success.</returns>
+        /// <returns>The Validate page with results or an error message.</returns>
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
+            if (string.IsNullOrWhiteSpace(EnteredCode))
             {
+                ErrorMessage = "Please enter an access code.";
                 return Page();
             }
 
-            _context.Attach(AccessCode).State = EntityState.Modified;
+            // Normalise to uppercase to handle case-insensitive entry
+            var normalisedCode = EnteredCode.Trim().ToUpperInvariant();
 
-            try
+            var accessCode = await _context.AccessCodes
+                .Include(a => a.Applicant)
+                    .ThenInclude(a => a!.ApplicantAddresses)
+                .FirstOrDefaultAsync(a => a.Code == normalisedCode);
+
+            if (accessCode == null)
             {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!AccessCodeExists(AccessCode.AccessCodeId))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                ErrorMessage = "The access code entered was not found.";
+                return Page();
             }
 
-            return RedirectToPage("./Index");
-        }
+            if (!accessCode.IsActive)
+            {
+                ErrorMessage = "This access code has been revoked.";
+                return Page();
+            }
 
-        private bool AccessCodeExists(int id)
-        {
-            return _context.AccessCodes.Any(e => e.AccessCodeId == id);
+            if (accessCode.ExpiryDate.HasValue && accessCode.ExpiryDate.Value < DateTimeOffset.UtcNow)
+            {
+                ErrorMessage = "This access code has expired.";
+                return Page();
+            }
+
+            // Code is valid — return the applicant's data
+            FoundApplicant = accessCode.Applicant;
+            return Page();
         }
     }
 }
