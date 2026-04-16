@@ -8,18 +8,39 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GardaVettingSystem.Pages.Applicants
 {
+    /// <summary>
+    /// Handles the creation of a new applicant profile for the logged-in user.
+    /// Each user can only have one profile — if one already exists, the user is
+    /// redirected to Edit instead.
+    /// </summary>
     [Authorize]
     public class CreateModel : PageModel
     {
         private readonly GardaVettingSystemDbContext _context;
         private readonly UserManager<IdentityUser> _userManager;
 
+        /// <summary>
+        /// Initialises a new instance of <see cref="CreateModel"/> with the required services.
+        /// </summary>
+        /// <param name="context">The database context.</param>
+        /// <param name="userManager">The ASP.NET Identity user manager.</param>
         public CreateModel(GardaVettingSystemDbContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
             _userManager = userManager;
         }
 
+        /// <summary>
+        /// The applicant profile being created, bound from the form post.
+        /// </summary>
+        [BindProperty]
+        public Applicant Applicant { get; set; } = default!;
+
+        /// <summary>
+        /// Handles GET requests. Checks whether the logged-in user already has a profile.
+        /// If so, redirects to Edit to prevent duplicate profiles.
+        /// </summary>
+        /// <returns>The Create page, or a redirect to Edit if a profile already exists.</returns>
         public async Task<IActionResult> OnGetAsync()
         {
             string? userId = _userManager.GetUserId(User);
@@ -37,10 +58,14 @@ namespace GardaVettingSystem.Pages.Applicants
             return Page();
         }
 
-        [BindProperty]
-        public Applicant Applicant { get; set; } = default!;
-
-        // For more information, see https://aka.ms/RazorPagesCRUD.
+        /// <summary>
+        /// Handles POST requests. Sets UserId server-side and saves the new applicant profile.
+        /// If a profile already exists for this user, redirects to Edit instead.
+        /// </summary>
+        /// <returns>
+        /// A redirect to Details on success, Edit if profile already exists,
+        /// or the form page if validation fails.
+        /// </returns>
         public async Task<IActionResult> OnPostAsync()
         {
             string? userId = _userManager.GetUserId(User);

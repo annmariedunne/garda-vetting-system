@@ -64,6 +64,13 @@ namespace GardaVettingSystem.Tests.Models
         // --- AddressLine ---
 
         [Test]
+        public void ApplicantAddress_AddressId_CanBeSet()
+        {
+            _address.AddressId = 5;
+            Assert.That(_address.AddressId, Is.EqualTo(5));
+        }
+
+        [Test]
         public void ApplicantAddress_AddressLine_Required_FailsWhenEmpty()
         {
             _address.AddressLine = string.Empty;
