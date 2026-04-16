@@ -3,8 +3,6 @@
 [![CI - Build and Test](https://github.com/annmariedunne/garda-vetting-system/actions/workflows/ci.yml/badge.svg)](https://github.com/annmariedunne/garda-vetting-system/actions/workflows/ci.yml)
 [![CodeQL Security Scan](https://github.com/annmariedunne/garda-vetting-system/actions/workflows/codeql.yml/badge.svg)](https://github.com/annmariedunne/garda-vetting-system/actions/workflows/codeql.yml)
 
-> ⚠️ **This is a temporary README and will be updated as the project progresses.**
-
 ## Overview
 
 This project is a college project developed as part of the the Project Module at ATU.
@@ -13,10 +11,19 @@ This project is a college project developed as part of the the Project Module at
 
 | Layer | Technology |
 |---|---|
-| Framework | ASP.NET Core with Razor Pages |
+| Framework | ASP.NET Core (.NET 10) with Razor Pages |
 | Database | SQL Server |
 | ORM | Entity Framework Core |
 | Language | C# |
+
+## Development Tools
+
+| Tool | Version |
+|---|---|
+| IDE | Visual Studio 2026 |
+| Testing | NUnit |
+| ORM Tooling | Entity Framework Core Tools |
+| DevOps | GitHub Actions, SonarQube, CodeQL |
 
 ---
 
@@ -38,10 +45,14 @@ This project is a college project developed as part of the the Project Module at
 - ✅ Address history displayed on Applicant profile page
 - ✅ NUnit tests expanded — ApplicantAddress model and Applicant validation tests
 - ✅ Pull request template added
+- ✅ AccessCode generation with cryptographically secure 12-character codes
+- ✅ AccessCode revocation with audit trail preserved
+- ✅ Organisation-side validation page
+- ✅ XML doc comments added throughout all models and page models
+- ✅ NuGet packages updated to latest versions
 
 ### In Progress
-- 🔄 AccessCode generation and validation (next)
-- 🔄 GitHub Actions CI/CD pipeline
+- 🔄 Implementation Chapter writeup — deadline 3 May 2026
 
 ## Documentation Project Timeline
 
