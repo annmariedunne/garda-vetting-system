@@ -91,7 +91,7 @@ namespace GardaVettingSystem.Services
                                     table.Cell().Padding(5).Text(address.Postcode);
                                     table.Cell().Padding(5).Text(address.Country);
                                     table.Cell().Padding(5).Text(address.ResidentFrom?.ToString(CultureInfo.InvariantCulture) ?? string.Empty);
-                                    table.Cell().Padding(5).Text(address.ResidentTo.HasValue ? address.ResidentTo?.ToString(CultureInfo.InvariantCulture)! : "Current");
+                                    table.Cell().Padding(5).Text(address.ResidentTo.HasValue ? address.ResidentTo.Value.ToString(CultureInfo.InvariantCulture)! : "Current");
                                 }
                             });
                         }
