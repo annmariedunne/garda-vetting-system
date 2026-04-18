@@ -149,6 +149,16 @@ namespace GardaVettingSystem.Tests.Models
             Assert.That(_address.ResidentFrom, Is.EqualTo(2020));
         }
 
+        [Test]
+        public void ApplicantAddress_ResidentFrom_Required_FailsWhenNull()
+        {
+            _address.ResidentFrom = null;
+            var results = new List<ValidationResult>();
+            Validator.TryValidateObject(_address, new ValidationContext(_address), results, true);
+            Assert.That(results, Has.Some.Matches<ValidationResult>(r =>
+                r.MemberNames.Contains("ResidentFrom")));
+        }
+
         // --- ResidentTo ---
 
         [Test]

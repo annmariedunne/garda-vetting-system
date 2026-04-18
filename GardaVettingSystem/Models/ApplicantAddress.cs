@@ -54,7 +54,7 @@ namespace GardaVettingSystem.Models
         /// </summary>
         [Required(ErrorMessage = "Resident from year is required")]
         [Display(Name = "Resident From")]
-        public int ResidentFrom { get; set; }
+        public int? ResidentFrom { get; set; }
 
         /// <summary>
         /// Gets or sets the year the applicant stopped residing at this address.

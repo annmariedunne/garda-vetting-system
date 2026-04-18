@@ -133,7 +133,14 @@
                 @foreach (var code in Model.Applicant.AccessCodes)
                 {
                     <tr>
-                        <td><strong>@code.Code</strong></td>
+                        <td class="text-nowrap">
+                            <strong>@code.Code</strong>
+                            <button type="button" class="btn btn-outline-primary btn-sm ms-4"
+                                    onclick="copyToClipboard('@code.Code', this)"
+                                    title="Copy code">
+                                <i class="bi bi-clipboard"></i>
+                            </button>
+                        </td>
                         <td>@code.OrganisationName</td>
                         <td>@code.CreatedDate.ToString("d")</td>
                         <td>@(code.ExpiryDate.HasValue? code.ExpiryDate.Value.ToString("d") : "No expiry")</td>
@@ -163,6 +170,19 @@
                 }
             </tbody>
         </table>
+
+        @section Scripts {
+            <script>
+                function copyToClipboard(text, button) {
+                    navigator.clipboard.writeText(text).then(function () {
+                        button.innerHTML = '<i class="bi bi-clipboard-check"></i>';
+                        setTimeout(function () {
+                            button.innerHTML = '<i class="bi bi-clipboard"></i>';
+                        }, 2000);
+                    });
+                }
+            </script>
+        }
     }
     else
     {
