@@ -1,4 +1,5 @@
 using GardaVettingSystem.Data;
+using GardaVettingSystem.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,6 +15,7 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<GardaVettingSystemDbContext>();
 builder.Services.AddRazorPages();
+builder.Services.AddScoped<VettingPdfService>();
 
 var app = builder.Build();
 

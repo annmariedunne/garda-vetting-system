@@ -111,9 +111,16 @@
 <div class="mt-4">
     <h4>Access Codes</h4>
     <div>
-        <a asp-page="/AccessCodes/Create" class="btn btn-info btn-sm">
-            <i class="bi bi-key-fill"></i> Generate Access Code
-        </a>
+        @if (Model.Applicant.ApplicantAddresses != null && Model.Applicant.ApplicantAddresses.Any())
+        {
+            <a asp-page="/AccessCodes/Create" class="btn btn-info btn-sm">
+                <i class="bi bi-key-fill"></i> Generate Access Code
+            </a>
+        }
+        else
+        {
+            <p class="text-muted">Add at least one address before generating an access code.</p>
+        }
     </div>
     <hr />
     @if (Model.Applicant.AccessCodes != null && Model.Applicant.AccessCodes.Any())
@@ -121,7 +128,8 @@
         <table class="table table-sm align-middle">
             <thead>
                 <tr>
-                    <th>Code</th>
+                    <th style="width: 1%">Code</th>
+                    <th></th>
                     <th>Organisation</th>
                     <th>Created</th>
                     <th>Expires</th>
@@ -133,9 +141,9 @@
                 @foreach (var code in Model.Applicant.AccessCodes)
                 {
                     <tr>
-                        <td class="text-nowrap">
-                            <strong>@code.Code</strong>
-                            <button type="button" class="btn btn-outline-primary btn-sm ms-4"
+                        <td style="width: 1%"><strong>@code.Code</strong></td>
+                        <td>
+                            <button type="button" class="btn btn-outline-primary btn-sm"
                                     onclick="copyToClipboard('@code.Code', this)"
                                     title="Copy code">
                                 <i class="bi bi-clipboard"></i>
@@ -170,27 +178,33 @@
                 }
             </tbody>
         </table>
-
-        @section Scripts {
-            <script>
-                function copyToClipboard(text, button) {
-                    navigator.clipboard.writeText(text).then(function () {
-                        button.innerHTML = '<i class="bi bi-clipboard-check"></i>';
-                        setTimeout(function () {
-                            button.innerHTML = '<i class="bi bi-clipboard"></i>';
-                        }, 2000);
-                    });
-                }
-            </script>
-        }
+  
     }
     else
     {
         <p class="text-muted">No access codes generated yet.</p>
     }
 </div>
-<div>
+<div class="mt-3">
+    <form method="post" asp-page-handler="DownloadPdf" asp-route-id="@Model.Applicant.ApplicantNumber" class="d-inline">
+        <button type="submit" class="btn btn-secondary btn-sm">
+            <i class="bi bi-file-earmark-pdf-fill"></i> Download PDF
+        </button>
+    </form>
     <a asp-page="./Delete" asp-route-id="@Model.Applicant.ApplicantNumber" class="btn btn-danger btn-sm">
         <i class="bi bi-trash-fill"></i> Delete My Profile
     </a>
 </div>
+
+@section Scripts {
+    <script>
+        function copyToClipboard(text, button) {
+            navigator.clipboard.writeText(text).then(function () {
+                button.innerHTML = '<i class="bi bi-clipboard-check"></i>';
+                setTimeout(function () {
+                    button.innerHTML = '<i class="bi bi-clipboard"></i>';
+                }, 2000);
+            });
+        }
+    </script>
+}

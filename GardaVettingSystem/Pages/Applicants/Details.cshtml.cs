@@ -1,11 +1,12 @@
 ﻿
+using GardaVettingSystem.Data;
+using GardaVettingSystem.Models;
+using GardaVettingSystem.Services;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using GardaVettingSystem.Data;
-using GardaVettingSystem.Models;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 
 namespace GardaVettingSystem.Pages.Applicants
 {
@@ -19,16 +20,19 @@ namespace GardaVettingSystem.Pages.Applicants
     {
         private readonly GardaVettingSystemDbContext _context;
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly VettingPdfService _pdfService;
 
         /// <summary>
         /// Initialises a new instance of <see cref="DetailsModel"/> with the required services.
         /// </summary>
         /// <param name="context">The database context.</param>
         /// <param name="userManager">The ASP.NET Identity user manager.</param>
-        public DetailsModel(GardaVettingSystemDbContext context, UserManager<IdentityUser> userManager)
+        /// <param name="pdfService">The PDF generation service.</param>
+        public DetailsModel(GardaVettingSystemDbContext context, UserManager<IdentityUser> userManager, VettingPdfService pdfService)
         {
             _context = context;
             _userManager = userManager;
+            _pdfService = pdfService;
         }
 
         /// <summary>
@@ -67,6 +71,31 @@ namespace GardaVettingSystem.Pages.Applicants
 
             // Record not found or doesn't belong to this user - redirect to their own profile
             return RedirectToPage("/Applicants/Create");
+        }
+
+        /// <summary>
+        /// Handles POST requests for PDF export. Generates a PDF of the applicant's
+        /// vetting profile and returns it as a file download.
+        /// </summary>
+        /// <param name="id">The ApplicantNumber to export.</param>
+        /// <returns>A PDF file download, or a redirect if the profile is not found.</returns>
+        public async Task<IActionResult> OnPostDownloadPdfAsync(int? id)
+        {
+            if (id == null)
+                return RedirectToPage("/Applicants/Create");
+
+            string? userId = _userManager.GetUserId(User);
+            Applicant? applicant = await _context.Applicants
+                .Include(a => a.ApplicantAddresses)
+                .FirstOrDefaultAsync(m => m.ApplicantNumber == id && m.UserId == userId);
+
+            if (applicant == null)
+                return RedirectToPage("/Applicants/Create");
+
+            var pdf = _pdfService.GeneratePdf(applicant);
+            var fileName = $"{DateTimeOffset.UtcNow:yyyyMMdd}_VettingProfile_{applicant.FullName.Replace(" ", "_", StringComparison.OrdinalIgnoreCase)}.pdf";
+
+            return File(pdf, "application/pdf", fileName);
         }
     }
 }
