@@ -62,10 +62,16 @@ namespace GardaVettingSystem.Pages.AccessCodes
         {
             var userId = _userManager.GetUserId(User);
             var applicant = await _context.Applicants
+                .Include(a => a.ApplicantAddresses)
                 .FirstOrDefaultAsync(a => a.UserId == userId);
 
             if (applicant == null)
                 return RedirectToPage(ApplicantsCreatePage);
+
+            if (applicant.ApplicantAddresses.Count == 0)
+            {
+                return RedirectToPage(ApplicantsDetailsPage, new { id = applicant.ApplicantNumber });
+            }
 
             ApplicantNumber = applicant.ApplicantNumber;
             return Page();
@@ -83,10 +89,16 @@ namespace GardaVettingSystem.Pages.AccessCodes
         {
             var userId = _userManager.GetUserId(User);
             var applicant = await _context.Applicants
+                .Include(a => a.ApplicantAddresses)
                 .FirstOrDefaultAsync(a => a.UserId == userId);
 
             if (applicant == null)
                 return RedirectToPage(ApplicantsCreatePage);
+
+            if (applicant.ApplicantAddresses.Count == 0)
+            {
+                return RedirectToPage(ApplicantsDetailsPage, new { id = applicant.ApplicantNumber });
+            }
 
             AccessCode.ApplicantNumber = applicant.ApplicantNumber;
             AccessCode.Code = GenerateAccessCode();
