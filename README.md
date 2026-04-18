@@ -29,7 +29,7 @@ This project is a college project developed as part of the the Project Module at
 
 ## Project Status
 
-🚧 **In Development** — Core data models and Applicant registration flow implemented
+🚧 **In Development** — AccessCode generation, revocation and validation implemented
 
 ### Completed
 - ✅ GitHub repository setup with branch protection and dev workflow
@@ -38,7 +38,7 @@ This project is a college project developed as part of the the Project Module at
 - ✅ Entity Framework Core configured with SQL Server LocalDB
 - ✅ Core domain models created: Applicant, ApplicantAddress, AccessCode
 - ✅ NUnit test project added with initial model tests
-- ✅ GitHub Actions CI/CD pipeline in progress
+- ✅ GitHub Actions CI/CD pipeline implemented
 - ✅ Secure user registration and authentication
 - ✅ Personal data storage (Applicant profile)
 - ✅ ApplicantAddresses secured with ownership checks and wired to profile
@@ -50,6 +50,9 @@ This project is a college project developed as part of the the Project Module at
 - ✅ Organisation-side validation page
 - ✅ XML doc comments added throughout all models and page models
 - ✅ NuGet packages updated to latest versions
+- ✅ Post-deletion confirmation flow with option to fully delete Identity account
+- ✅ ResidentFrom made nullable with database migration
+- ✅ Clipboard copy button for access codes
 
 ### In Progress
 - 🔄 Implementation Chapter writeup — deadline 3 May 2026

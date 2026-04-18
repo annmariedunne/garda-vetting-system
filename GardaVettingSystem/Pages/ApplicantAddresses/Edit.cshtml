@@ -33,12 +33,12 @@
             <div class="form-group">
 <span class="text-danger">*</span>
                 <label asp-for="ApplicantAddress.ResidentFrom" class="control-label"></label>
-                <input asp-for="ApplicantAddress.ResidentFrom" class="form-control" aria-required="true"/>
+                <input asp-for="ApplicantAddress.ResidentFrom" class="form-control" aria-required="true" placeholder="YYYY" />
                 <span asp-validation-for="ApplicantAddress.ResidentFrom" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ApplicantAddress.ResidentTo" class="control-label"></label>
-                <input asp-for="ApplicantAddress.ResidentTo" class="form-control" />
+                <input asp-for="ApplicantAddress.ResidentTo" class="form-control" placeholder="YYYY" />
                 <span asp-validation-for="ApplicantAddress.ResidentTo" class="text-danger"></span>
             </div>
             <div class="form-group mt-3">

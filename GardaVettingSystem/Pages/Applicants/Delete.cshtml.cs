@@ -92,7 +92,7 @@ namespace GardaVettingSystem.Pages.Applicants
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToPage("/Index");
+            return RedirectToPage("/Applicants/Index", new { deleted = true });
         }
     }
 }
