@@ -11,14 +11,20 @@ namespace GardaVettingSystem.Services
     /// Used to provide a downloadable export of profile data for organisations
     /// that cannot access the system directly.
     /// </summary>
-    public class VettingPdfService
+    public sealed class VettingPdfService
     {
+
+        /// <summary>
+        /// Protected constructor — prevents external instantiation.
+        /// </summary>
+        private VettingPdfService() { }
+
         /// <summary>
         /// Generates a PDF document for the given applicant profile.
         /// </summary>
         /// <param name="applicant">The applicant profile including address history.</param>
         /// <returns>A byte array containing the generated PDF.</returns>
-        public byte[] GeneratePdf(Applicant applicant)
+        public static byte[] GeneratePdf(Applicant applicant)
         {
             QuestPDF.Settings.License = LicenseType.Community;
 
@@ -30,78 +36,8 @@ namespace GardaVettingSystem.Services
                     page.Margin(2, Unit.Centimetre);
                     page.DefaultTextStyle(x => x.FontSize(11));
 
-                    page.Header().Column(col =>
-                    {
-                        col.Item().Text("Garda Vetting Data Reuse System")
-                            .FontSize(18).Bold();
-                        col.Item().Text("Applicant Vetting Profile")
-                            .FontSize(13).FontColor(Colors.Grey.Darken2);
-                        col.Item().PaddingTop(5).LineHorizontal(1);
-                    });
-
-                    page.Content().PaddingTop(20).Column(col =>
-                    {
-                        // Personal Details
-                        col.Item().Text("Personal Details").FontSize(13).Bold();
-                        col.Item().PaddingTop(5).Table(table =>
-                        {
-                            table.ColumnsDefinition(columns =>
-                            {
-                                columns.RelativeColumn(2);
-                                columns.RelativeColumn(3);
-                            });
-
-                            AddRow(table, "Full Name", applicant.FullName);
-                            AddRow(table, "Date of Birth", applicant.DateOfBirth?.ToString("d", CultureInfo.InvariantCulture) ?? string.Empty);
-                            AddRow(table, "Gender", applicant.Gender);
-                            AddRow(table, "Place of Birth", applicant.BirthPlace);
-                            AddRow(table, "Surname at Birth", applicant.BirthLastName);
-                            AddRow(table, "Mother's Last Name", applicant.MothersLastName);
-                        });
-
-                        // Address History
-                        col.Item().PaddingTop(20).Text("Address History").FontSize(13).Bold();
-
-                        if (applicant.ApplicantAddresses != null && applicant.ApplicantAddresses.Count > 0)
-                        {
-                            col.Item().PaddingTop(5).Table(table =>
-                            {
-                                table.ColumnsDefinition(columns =>
-                                {
-                                    columns.RelativeColumn(4);
-                                    columns.RelativeColumn(2);
-                                    columns.RelativeColumn(2);
-                                    columns.RelativeColumn(1);
-                                    columns.RelativeColumn(1);
-                                });
-
-                                // Header row
-                                table.Header(header =>
-                                {
-                                    header.Cell().Background(Colors.Grey.Lighten2).Padding(5).Text("Address").Bold();
-                                    header.Cell().Background(Colors.Grey.Lighten2).Padding(5).Text("Postcode").Bold();
-                                    header.Cell().Background(Colors.Grey.Lighten2).Padding(5).Text("Country").Bold();
-                                    header.Cell().Background(Colors.Grey.Lighten2).Padding(5).Text("From").Bold();
-                                    header.Cell().Background(Colors.Grey.Lighten2).Padding(5).Text("To").Bold();
-                                });
-
-                                foreach (var address in applicant.ApplicantAddresses)
-                                {
-                                    table.Cell().Padding(5).Text(address.AddressLine);
-                                    table.Cell().Padding(5).Text(address.Postcode);
-                                    table.Cell().Padding(5).Text(address.Country);
-                                    table.Cell().Padding(5).Text(address.ResidentFrom?.ToString(CultureInfo.InvariantCulture) ?? string.Empty);
-                                    table.Cell().Padding(5).Text(address.ResidentTo.HasValue ? address.ResidentTo.Value.ToString(CultureInfo.InvariantCulture)! : "Current");
-                                }
-                            });
-                        }
-                        else
-                        {
-                            col.Item().PaddingTop(5).Text("No address history available.")
-                                .FontColor(Colors.Grey.Darken1);
-                        }
-                    });
-
+                    page.Header().Column(col => AddHeader(col));
+                    page.Content().PaddingTop(20).Column(col => AddContent(col, applicant));
                     page.Footer().AlignCenter().Text(text =>
                     {
                         text.Span("Generated by Garda Vetting Data Reuse System — ");
@@ -112,8 +48,100 @@ namespace GardaVettingSystem.Services
         }
 
         /// <summary>
+        /// Adds the document header section.
+        /// </summary>
+        /// <param name="col">The column descriptor to add the header to.</param>
+        private static void AddHeader(ColumnDescriptor col)
+        {
+            col.Item().Text("Garda Vetting Data Reuse System").FontSize(18).Bold();
+            col.Item().Text("Applicant Vetting Profile").FontSize(13).FontColor(Colors.Grey.Darken2);
+            col.Item().PaddingTop(5).LineHorizontal(1);
+        }
+
+        /// <summary>
+        /// Adds the main content section including personal details and address history.
+        /// </summary>
+        /// <param name="col">The column descriptor to add content to.</param>
+        /// <param name="applicant">The applicant profile to render.</param>
+        private static void AddContent(ColumnDescriptor col, Applicant applicant)
+        {
+            col.Item().Text("Personal Details").FontSize(13).Bold();
+            col.Item().PaddingTop(5).Table(table => AddPersonalDetailsTable(table, applicant));
+
+            col.Item().PaddingTop(20).Text("Address History").FontSize(13).Bold();
+
+            if (applicant.ApplicantAddresses != null && applicant.ApplicantAddresses.Count > 0)
+            {
+                col.Item().PaddingTop(5).Table(table => AddAddressTable(table, applicant.ApplicantAddresses));
+            }
+            else
+            {
+                col.Item().PaddingTop(5).Text("No address history available.").FontColor(Colors.Grey.Darken1);
+            }
+        }
+
+        /// <summary>
+        /// Adds the personal details table to the document.
+        /// </summary>
+        /// <param name="table">The table descriptor to populate.</param>
+        /// <param name="applicant">The applicant whose details to render.</param>
+        private static void AddPersonalDetailsTable(TableDescriptor table, Applicant applicant)
+        {
+            table.ColumnsDefinition(columns =>
+            {
+                columns.RelativeColumn(2);
+                columns.RelativeColumn(3);
+            });
+
+            AddRow(table, "Full Name", applicant.FullName);
+            AddRow(table, "Date of Birth", applicant.DateOfBirth?.ToString("d", CultureInfo.InvariantCulture) ?? string.Empty);
+            AddRow(table, "Gender", applicant.Gender);
+            AddRow(table, "Place of Birth", applicant.BirthPlace);
+            AddRow(table, "Surname at Birth", applicant.BirthLastName);
+            AddRow(table, "Mother's Last Name", applicant.MothersLastName);
+        }
+
+        /// <summary>
+        /// Adds the address history table to the document.
+        /// </summary>
+        /// <param name="table">The table descriptor to populate.</param>
+        /// <param name="addresses">The collection of addresses to render.</param>
+        private static void AddAddressTable(TableDescriptor table, ICollection<ApplicantAddress> addresses)
+        {
+            table.ColumnsDefinition(columns =>
+            {
+                columns.RelativeColumn(4);
+                columns.RelativeColumn(2);
+                columns.RelativeColumn(2);
+                columns.RelativeColumn(1);
+                columns.RelativeColumn(1);
+            });
+
+            table.Header(header =>
+            {
+                header.Cell().Background(Colors.Grey.Lighten2).Padding(5).Text("Address").Bold();
+                header.Cell().Background(Colors.Grey.Lighten2).Padding(5).Text("Postcode").Bold();
+                header.Cell().Background(Colors.Grey.Lighten2).Padding(5).Text("Country").Bold();
+                header.Cell().Background(Colors.Grey.Lighten2).Padding(5).Text("From").Bold();
+                header.Cell().Background(Colors.Grey.Lighten2).Padding(5).Text("To").Bold();
+            });
+
+            foreach (var address in addresses)
+            {
+                table.Cell().Padding(5).Text(address.AddressLine);
+                table.Cell().Padding(5).Text(address.Postcode);
+                table.Cell().Padding(5).Text(address.Country);
+                table.Cell().Padding(5).Text(address.ResidentFrom?.ToString(CultureInfo.InvariantCulture) ?? string.Empty);
+                table.Cell().Padding(5).Text(address.ResidentTo.HasValue ? address.ResidentTo.Value.ToString(CultureInfo.InvariantCulture) : "Current");
+            }
+        }
+
+        /// <summary>
         /// Adds a label/value row to a two-column table.
         /// </summary>
+        /// <param name="table">The table descriptor to add the row to.</param>
+        /// <param name="label">The label text.</param>
+        /// <param name="value">The value text.</param>
         private static void AddRow(TableDescriptor table, string label, string value)
         {
             table.Cell().Padding(4).Text(label).Bold();

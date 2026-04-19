@@ -29,6 +29,24 @@
             @Html.DisplayFor(model => model.Applicant.LastName)
         </dd>
         <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Applicant.DateOfBirth):
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Applicant.DateOfBirth?.ToString("d")
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Applicant.Gender):
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Applicant.Gender)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Applicant.BirthPlace):
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Applicant.BirthPlace)
+        </dd>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Applicant.BirthLastName):
         </dt>
         <dd class="col-sm-10">
@@ -39,24 +57,6 @@
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Applicant.MothersLastName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Applicant.Gender):
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Applicant.Gender)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Applicant.DateOfBirth):
-        </dt>
-        <dd class="col-sm-10">
-            @Model.Applicant.DateOfBirth?.ToString("d")
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Applicant.BirthPlace):
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Applicant.BirthPlace)
         </dd>
     </dl>
 </div>
