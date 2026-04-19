@@ -53,6 +53,8 @@ This project is a college project developed as part of the the Project Module at
 - ✅ Post-deletion confirmation flow with option to fully delete Identity account
 - ✅ ResidentFrom made nullable with database migration
 - ✅ Clipboard copy button for access codes
+- ✅ PDF export — applicant profile downloadable as PDF
+- ✅ Default pages updated for consistency (Index, Privacy, Error, Layout)
 
 ### In Progress
 - 🔄 Implementation Chapter writeup — deadline 3 May 2026
