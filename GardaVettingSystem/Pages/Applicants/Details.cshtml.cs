@@ -20,19 +20,16 @@ namespace GardaVettingSystem.Pages.Applicants
     {
         private readonly GardaVettingSystemDbContext _context;
         private readonly UserManager<IdentityUser> _userManager;
-        private readonly VettingPdfService _pdfService;
 
         /// <summary>
         /// Initialises a new instance of <see cref="DetailsModel"/> with the required services.
         /// </summary>
         /// <param name="context">The database context.</param>
         /// <param name="userManager">The ASP.NET Identity user manager.</param>
-        /// <param name="pdfService">The PDF generation service.</param>
-        public DetailsModel(GardaVettingSystemDbContext context, UserManager<IdentityUser> userManager, VettingPdfService pdfService)
+        public DetailsModel(GardaVettingSystemDbContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
             _userManager = userManager;
-            _pdfService = pdfService;
         }
 
         /// <summary>
@@ -92,7 +89,7 @@ namespace GardaVettingSystem.Pages.Applicants
             if (applicant == null)
                 return RedirectToPage("/Applicants/Create");
 
-            var pdf = _pdfService.GeneratePdf(applicant);
+            var pdf = VettingPdfService.GeneratePdf(applicant);
             var fileName = $"{DateTimeOffset.UtcNow:yyyyMMdd}_VettingProfile_{applicant.FullName.Replace(" ", "_", StringComparison.OrdinalIgnoreCase)}.pdf";
 
             return File(pdf, "application/pdf", fileName);

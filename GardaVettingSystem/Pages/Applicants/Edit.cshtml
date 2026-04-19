@@ -27,14 +27,10 @@
                 <span asp-validation-for="Applicant.LastName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Applicant.BirthLastName" class="control-label"></label>:
-                <input asp-for="Applicant.BirthLastName" class="form-control" />
-                <span asp-validation-for="Applicant.BirthLastName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Applicant.MothersLastName" class="control-label"></label>:
-                <input asp-for="Applicant.MothersLastName" class="form-control" />
-                <span asp-validation-for="Applicant.MothersLastName" class="text-danger"></span>
+                <span class="text-danger">*</span>
+                <label asp-for="Applicant.DateOfBirth" class="control-label"></label>:
+                <input asp-for="Applicant.DateOfBirth" class="form-control" aria-required="true" value="@Model.Applicant.DateOfBirth?.ToString("yyyy-MM-dd")" type="date" />
+                <span asp-validation-for="Applicant.DateOfBirth" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <span class="text-danger">*</span>
@@ -50,15 +46,19 @@
                 <span asp-validation-for="Applicant.Gender" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <span class="text-danger">*</span>
-                <label asp-for="Applicant.DateOfBirth" class="control-label"></label>:
-                <input asp-for="Applicant.DateOfBirth" class="form-control" aria-required="true" value="@Model.Applicant.DateOfBirth?.ToString("yyyy-MM-dd")" type="date" />
-                <span asp-validation-for="Applicant.DateOfBirth" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Applicant.BirthPlace" class="control-label"></label>:
                 <input asp-for="Applicant.BirthPlace" class="form-control" />
                 <span asp-validation-for="Applicant.BirthPlace" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Applicant.BirthLastName" class="control-label"></label>:
+                <input asp-for="Applicant.BirthLastName" class="form-control" />
+                <span asp-validation-for="Applicant.BirthLastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Applicant.MothersLastName" class="control-label"></label>:
+                <input asp-for="Applicant.MothersLastName" class="form-control" />
+                <span asp-validation-for="Applicant.MothersLastName" class="text-danger"></span>
             </div>
             <div class="form-group mt-3">
                 <button type="submit" class="btn btn-primary btn-sm">

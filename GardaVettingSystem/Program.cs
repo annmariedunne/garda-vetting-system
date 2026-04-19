@@ -15,7 +15,6 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<GardaVettingSystemDbContext>();
 builder.Services.AddRazorPages();
-builder.Services.AddScoped<VettingPdfService>();
 
 var app = builder.Build();
 
