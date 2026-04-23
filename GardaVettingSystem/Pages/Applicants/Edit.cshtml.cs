@@ -94,7 +94,13 @@ namespace GardaVettingSystem.Pages.Applicants
                 return Page();
             }
 
-            _context.Attach(Applicant).State = EntityState.Modified;
+            existing.FirstName = Applicant.FirstName;
+            existing.LastName = Applicant.LastName;
+            existing.DateOfBirth = Applicant.DateOfBirth;
+            existing.Gender = Applicant.Gender;
+            existing.BirthPlace = Applicant.BirthPlace;
+            existing.BirthLastName = Applicant.BirthLastName;
+            existing.MothersLastName = Applicant.MothersLastName;
 
             try
             {

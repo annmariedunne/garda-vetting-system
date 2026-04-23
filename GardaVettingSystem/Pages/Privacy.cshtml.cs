@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace GardaVettingSystem.Pages
 {
@@ -13,6 +12,7 @@ namespace GardaVettingSystem.Pages
         /// </summary>
         public void OnGet()
         {
+            // Intentionally empty — no data is required to render this page.
         }
     }
 
