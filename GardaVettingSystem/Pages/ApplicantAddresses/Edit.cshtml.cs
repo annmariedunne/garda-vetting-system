@@ -104,7 +104,11 @@ namespace GardaVettingSystem.Pages.ApplicantAddresses
             if (!ModelState.IsValid)
                 return Page();
 
-            _context.Attach(ApplicantAddress).State = EntityState.Modified;
+            existing.AddressLine = ApplicantAddress.AddressLine;
+            existing.Postcode = ApplicantAddress.Postcode;
+            existing.Country = ApplicantAddress.Country;
+            existing.ResidentFrom = ApplicantAddress.ResidentFrom;
+            existing.ResidentTo = ApplicantAddress.ResidentTo;
 
             try
             {

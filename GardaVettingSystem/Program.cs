@@ -1,5 +1,4 @@
 using GardaVettingSystem.Data;
-using GardaVettingSystem.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,7 +10,7 @@ builder.Services.AddDbContext<GardaVettingSystemDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-// TODO: Re-enable this back to true
+// Email confirmation is not required — no email provider is configured for this project.
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<GardaVettingSystemDbContext>();
 builder.Services.AddRazorPages();
