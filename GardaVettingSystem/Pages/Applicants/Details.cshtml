@@ -16,46 +16,46 @@
     </div>
     <hr />
     <dl class="row">
-        <dt class="col-sm-2">
+        <dt class="col-12 col-md-4">
             @Html.DisplayNameFor(model => model.Applicant.FirstName):
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-12 col-md-8">
             @Html.DisplayFor(model => model.Applicant.FirstName)
         </dd>
-        <dt class="col-sm-2">
+        <dt class="col-12 col-md-4">
             @Html.DisplayNameFor(model => model.Applicant.LastName):
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-12 col-md-8">
             @Html.DisplayFor(model => model.Applicant.LastName)
         </dd>
-        <dt class="col-sm-2">
+        <dt class="col-12 col-md-4">
             @Html.DisplayNameFor(model => model.Applicant.DateOfBirth):
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-12 col-md-8">
             @Model.Applicant.DateOfBirth?.ToString("d")
         </dd>
-        <dt class="col-sm-2">
+        <dt class="col-12 col-md-4">
             @Html.DisplayNameFor(model => model.Applicant.Gender):
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-12 col-md-8">
             @Html.DisplayFor(model => model.Applicant.Gender)
         </dd>
-        <dt class="col-sm-2">
+        <dt class="col-12 col-md-4">
             @Html.DisplayNameFor(model => model.Applicant.BirthPlace):
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-12 col-md-8">
             @Html.DisplayFor(model => model.Applicant.BirthPlace)
         </dd>
-        <dt class="col-sm-2">
+        <dt class="col-12 col-md-4">
             @Html.DisplayNameFor(model => model.Applicant.BirthLastName):
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-12 col-md-8">
             @Html.DisplayFor(model => model.Applicant.BirthLastName)
         </dd>
-        <dt class="col-sm-2">
+        <dt class="col-12 col-md-4">
             @Html.DisplayNameFor(model => model.Applicant.MothersLastName):
         </dt>
-        <dd class="col-sm-10">
+        <dd class="col-12 col-md-8">
             @Html.DisplayFor(model => model.Applicant.MothersLastName)
         </dd>
     </dl>
@@ -70,38 +70,40 @@
     <hr />
     @if (Model.Applicant.ApplicantAddresses != null && Model.Applicant.ApplicantAddresses.Any())
     {
-        <table class="table table-sm align-middle">
-            <thead>
-                <tr>
-                    <th>Address</th>
-                    <th>Postcode</th>
-                    <th>Country</th>
-                    <th>From</th>
-                    <th>To</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var address in Model.Applicant.ApplicantAddresses)
-                {
+        <div class="table-responsive">
+            <table class="table table-sm align-middle">
+                <thead>
                     <tr>
-                        <td>@address.AddressLine</td>
-                        <td>@address.Postcode</td>
-                        <td>@address.Country</td>
-                        <td>@address.ResidentFrom</td>
-                        <td>@(address.ResidentTo.HasValue? address.ResidentTo.ToString() : "Current")</td>
-                        <td class="align-middle">
-                            <a asp-page="/ApplicantAddresses/Edit" asp-route-id="@address.AddressId" class="btn btn-primary btn-sm">
-                                <i class="bi bi-pencil-fill"></i>
-                            </a>
-                            <a asp-page="/ApplicantAddresses/Delete" asp-route-id="@address.AddressId" class="btn btn-danger btn-sm">
-                                <i class="bi bi-trash-fill"></i>
-                            </a>
-                        </td>
+                        <th>Address</th>
+                        <th>Postcode</th>
+                        <th>Country</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th></th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach (var address in Model.Applicant.ApplicantAddresses)
+                    {
+                        <tr>
+                            <td>@address.AddressLine</td>
+                            <td>@address.Postcode</td>
+                            <td>@address.Country</td>
+                            <td>@address.ResidentFrom</td>
+                            <td>@(address.ResidentTo.HasValue? address.ResidentTo.ToString() : "Current")</td>
+                            <td class="align-middle">
+                                <a asp-page="/ApplicantAddresses/Edit" asp-route-id="@address.AddressId" class="btn btn-primary btn-sm">
+                                    <i class="bi bi-pencil-fill"></i>
+                                </a>
+                                <a asp-page="/ApplicantAddresses/Delete" asp-route-id="@address.AddressId" class="btn btn-danger btn-sm">
+                                    <i class="bi bi-trash-fill"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     }
     else
     {
@@ -125,59 +127,61 @@
     <hr />
     @if (Model.Applicant.AccessCodes != null && Model.Applicant.AccessCodes.Any())
     {
-        <table class="table table-sm align-middle">
-            <thead>
-                <tr>
-                    <th style="width: 1%">Code</th>
-                    <th></th>
-                    <th>Organisation</th>
-                    <th>Created</th>
-                    <th>Expires</th>
-                    <th>Status</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var code in Model.Applicant.AccessCodes)
-                {
+        <div class="table-responsive">
+            <table class="table table-sm align-middle">
+                <thead>
                     <tr>
-                        <td style="width: 1%"><strong>@code.Code</strong></td>
-                        <td>
-                            <button type="button" class="btn btn-outline-primary btn-sm"
-                                    onclick="copyToClipboard('@code.Code', this)"
-                                    title="Copy code">
-                                <i class="bi bi-clipboard"></i>
-                            </button>
-                        </td>
-                        <td>@code.OrganisationName</td>
-                        <td>@code.CreatedDate.ToString("d")</td>
-                        <td>@(code.ExpiryDate.HasValue? code.ExpiryDate.Value.ToString("d") : "No expiry")</td>
-                        <td class="align-middle">
-                            @if (!code.IsActive)
-                            {
-                                <span class="badge bg-secondary">Revoked</span>
-                            }
-                            else if (code.ExpiryDate.HasValue && code.ExpiryDate.Value < DateTimeOffset.UtcNow)
-                            {
-                                <span class="badge bg-warning text-white">Expired</span>
-                            }
-                            else
-                            {
-                                <span class="badge bg-success">Active</span>
-                            }
-                        </td>
-                        <td class="align-middle">
-                            @if (code.IsActive && (!code.ExpiryDate.HasValue || code.ExpiryDate.Value > DateTimeOffset.UtcNow))
-                            {
-                                <a asp-page="/AccessCodes/Delete" asp-route-id="@code.AccessCodeId" class="btn btn-danger btn-sm">
-                                    <i class="bi bi-x-circle-fill"></i> Revoke
-                                </a>
-                            }
-                        </td>
+                        <th style="width: 1%">Code</th>
+                        <th></th>
+                        <th>Organisation</th>
+                        <th>Created</th>
+                        <th>Expires</th>
+                        <th>Status</th>
+                        <th></th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach (var code in Model.Applicant.AccessCodes)
+                    {
+                        <tr>
+                            <td style="width: 1%"><strong>@code.Code</strong></td>
+                            <td>
+                                <button type="button" class="btn btn-outline-primary btn-sm"
+                                        onclick="copyToClipboard('@code.Code', this)"
+                                        title="Copy code">
+                                    <i class="bi bi-clipboard"></i>
+                                </button>
+                            </td>
+                            <td>@code.OrganisationName</td>
+                            <td>@code.CreatedDate.ToString("d")</td>
+                            <td>@(code.ExpiryDate.HasValue? code.ExpiryDate.Value.ToString("d") : "No expiry")</td>
+                            <td class="align-middle">
+                                @if (!code.IsActive)
+                                {
+                                    <span class="badge bg-secondary">Revoked</span>
+                                }
+                                else if (code.ExpiryDate.HasValue && code.ExpiryDate.Value < DateTimeOffset.UtcNow)
+                                {
+                                    <span class="badge bg-warning text-white">Expired</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-success">Active</span>
+                                }
+                            </td>
+                            <td class="align-middle">
+                                @if (code.IsActive && (!code.ExpiryDate.HasValue || code.ExpiryDate.Value > DateTimeOffset.UtcNow))
+                                {
+                                    <a asp-page="/AccessCodes/Delete" asp-route-id="@code.AccessCodeId" class="btn btn-danger btn-sm">
+                                        <i class="bi bi-x-circle-fill"></i> Revoke
+                                    </a>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
   
     }
     else

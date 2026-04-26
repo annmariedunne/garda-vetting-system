@@ -47,16 +47,16 @@ namespace GardaVettingSystem.Models
         /// Gets or sets the applicant's surname at birth, if different from their current last name.
         /// Optional field.
         /// </summary>
-        [StringLength(50, ErrorMessage = "Birth surname name cannot exceed 50 characters")]
+        [StringLength(50, ErrorMessage = "Birth surname cannot exceed 50 characters")]
         [Display(Name = "Surname at birth")]
         public string BirthLastName { get; set; } = string.Empty;
 
         /// <summary>
-        /// Gets or sets the applicant's mother's last name.
+        /// Gets or sets the applicant's mother's maiden name.
         /// Optional field required for some vetting applications.
         /// </summary>
-        [StringLength(50, ErrorMessage = "Mother's last name cannot exceed 50 characters")]
-        [Display(Name = "Mother's last name")]
+        [StringLength(50, ErrorMessage = "Mother's maiden  name cannot exceed 50 characters")]
+        [Display(Name = "Mother's maiden name")]
         public string MothersLastName { get; set; } = string.Empty;
 
         /// <summary>

@@ -98,7 +98,7 @@ namespace GardaVettingSystem.Services
             AddRow(table, "Gender", applicant.Gender);
             AddRow(table, "Place of Birth", applicant.BirthPlace);
             AddRow(table, "Surname at Birth", applicant.BirthLastName);
-            AddRow(table, "Mother's Last Name", applicant.MothersLastName);
+            AddRow(table, "Mother's Maiden Name", applicant.MothersLastName);
         }
 
         /// <summary>
