@@ -29,7 +29,7 @@ This project is a college project developed as part of the the Project Module at
 
 ## Project Status
 
-🚧 **In Development** — AccessCode generation, revocation and validation implemented
+🚧 **In Development** — All functional requirements met, Implementation Chapter in progress
 
 ### Completed
 - ✅ GitHub repository setup with branch protection and dev workflow
@@ -55,6 +55,13 @@ This project is a college project developed as part of the the Project Module at
 - ✅ Clipboard copy button for access codes
 - ✅ PDF export — applicant profile downloadable as PDF
 - ✅ Default pages updated for consistency (Index, Privacy, Error, Layout)
+- ✅ Public validate access added — organisations can validate codes without logging in
+- ✅ Privacy page updated — GDPR-aware Privacy Notice added
+- ✅ EF Core tracking conflict fixed on Applicant and Address edit pages
+- ✅ Navbar updated to display applicant first name instead of email address
+- ✅ UI responsive layout improvements — all form and display pages updated for mobile, tablet and desktop
+- ✅ "Mother's Maiden Name" label corrected across all pages, Applicant.cs string messages and PDF export
+- ✅ Resident To hint text added to address pages
 
 ### In Progress
 - 🔄 Implementation Chapter writeup — deadline 3 May 2026
