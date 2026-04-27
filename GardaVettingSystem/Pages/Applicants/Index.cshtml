@@ -2,77 +2,32 @@
 @model GardaVettingSystem.Pages.Applicants.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Profile Deleted";
 }
 
-<h1>Index</h1>
+<div class="text-center mt-5">
+    <i class="bi bi-check-circle-fill text-success" style="font-size: 3rem;"></i>
+    <h1 class="mt-3">Profile Deleted</h1>
+    <p class="text-muted mt-3">Your applicant profile and all associated data has been permanently removed.</p>
+    <p class="text-muted">You can create a new profile or log out.</p>
+    <div class="mt-4">
+        <a asp-page="/Applicants/Create" class="btn btn-primary btn-sm">
+            <i class="bi bi-person-plus-fill"></i> Create New Profile
+        </a>
+        <form method="post" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="/" class="d-inline">
+            <button type="submit" class="btn btn-danger btn-sm">
+                <i class="bi bi-box-arrow-right"></i> Logout
+            </button>
+        </form>
+    </div>
+</div>
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Applicant[0].UserId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Applicant[0].FirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Applicant[0].LastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Applicant[0].BirthLastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Applicant[0].MothersLastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Applicant[0].Gender)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Applicant[0].DateOfBirth)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Applicant[0].BirthPlace)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Applicant) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BirthLastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MothersLastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gender)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateOfBirth)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BirthPlace)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.ApplicantNumber">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ApplicantNumber">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ApplicantNumber">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="mt-3">
+    <hr />
+    <p class="text-muted small">Want to completely remove your account including your email address?</p>
+    <form method="post" asp-page="/Applicants/Index">
+        <button type="submit" class="btn btn-outline-danger btn-sm">
+            <i class="bi bi-person-x-fill"></i> Delete My Account Completely
+        </button>
+    </form>
+</div>

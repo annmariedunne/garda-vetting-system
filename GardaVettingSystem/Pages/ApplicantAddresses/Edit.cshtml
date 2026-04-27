@@ -10,17 +10,12 @@
 <h4>ApplicantAddress</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-12 col-md-8 col-lg-6">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ApplicantAddress.AddressId" />
             <div class="form-group">
-                <label asp-for="ApplicantAddress.ApplicantNumber" class="control-label"></label>
-                <select asp-for="ApplicantAddress.ApplicantNumber" class="form-control" asp-items="ViewBag.ApplicantNumber" ></select>
-                <span asp-validation-for="ApplicantAddress.ApplicantNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-<span class="text-danger">*</span>
+                <span class="text-danger">*</span>
                 <label asp-for="ApplicantAddress.AddressLine" class="control-label"></label>
                 <input asp-for="ApplicantAddress.AddressLine" class="form-control" aria-required="true"/>
                 <span asp-validation-for="ApplicantAddress.AddressLine" class="text-danger"></span>
@@ -36,25 +31,27 @@
                 <span asp-validation-for="ApplicantAddress.Country" class="text-danger"></span>
             </div>
             <div class="form-group">
-<span class="text-danger">*</span>
+                <span class="text-danger">*</span>
                 <label asp-for="ApplicantAddress.ResidentFrom" class="control-label"></label>
-                <input asp-for="ApplicantAddress.ResidentFrom" class="form-control" aria-required="true"/>
+                <input asp-for="ApplicantAddress.ResidentFrom" class="form-control" aria-required="true" placeholder="YYYY" />
                 <span asp-validation-for="ApplicantAddress.ResidentFrom" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ApplicantAddress.ResidentTo" class="control-label"></label>
-                <input asp-for="ApplicantAddress.ResidentTo" class="form-control" />
+                <input asp-for="ApplicantAddress.ResidentTo" class="form-control" placeholder="YYYY" />
                 <span asp-validation-for="ApplicantAddress.ResidentTo" class="text-danger"></span>
+                <small class="text-muted">Leave blank if you currently reside at this address.</small>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+            <div class="form-group mt-3">
+                <button type="submit" class="btn btn-primary btn-sm">
+                    <i class="bi bi-floppy"></i> Save
+                </button>
+                <a asp-page="/Applicants/Details" asp-route-id="@Model.ApplicantAddress.ApplicantNumber" class="btn btn-secondary btn-sm">
+                    <i class="bi bi-arrow-left"></i> Cancel
+                </a>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-page="./Index">Back to List</a>
 </div>
 
 @section Scripts {

@@ -10,7 +10,8 @@ builder.Services.AddDbContext<GardaVettingSystemDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+// Email confirmation is not required — no email provider is configured for this project.
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<GardaVettingSystemDbContext>();
 builder.Services.AddRazorPages();
 

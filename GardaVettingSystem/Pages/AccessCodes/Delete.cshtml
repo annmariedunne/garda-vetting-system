@@ -2,57 +2,48 @@
 @model GardaVettingSystem.Pages.AccessCodes.DeleteModel
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Revoke Access Code";
 }
 
-<h1>Delete</h1>
+<h1>Revoke Access Code</h1>
+<h4 class="text-danger">Are you sure you want to revoke this access code?</h4>
+<p class="text-muted">The code will be deactivated and the organisation will no longer be able to use it to access your data.</p>
+<hr />
+<dl class="row">
+    <dt class="col-12 col-md-4">
+        @Html.DisplayNameFor(model => model.AccessCode.Code)
+    </dt>
+    <dd class="col-12 col-md-8">
+        <strong>@Html.DisplayFor(model => model.AccessCode.Code)</strong>
+    </dd>
+    <dt class="col-12 col-md-4">
+        @Html.DisplayNameFor(model => model.AccessCode.OrganisationName)
+    </dt>
+    <dd class="col-12 col-md-8">
+        @Html.DisplayFor(model => model.AccessCode.OrganisationName)
+    </dd>
+    <dt class="col-12 col-md-4">
+        @Html.DisplayNameFor(model => model.AccessCode.CreatedDate)
+    </dt>
+    <dd class="col-12 col-md-8">
+        @Model.AccessCode.CreatedDate.ToString("d")
+    </dd>
+    <dt class="col-12 col-md-4">
+        @Html.DisplayNameFor(model => model.AccessCode.ExpiryDate)
+    </dt>
+    <dd class="col-12 col-md-8">
+        @(Model.AccessCode.ExpiryDate.HasValue? Model.AccessCode.ExpiryDate.Value.ToString("d") : "No expiry")
+    </dd>
+</dl>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>AccessCode</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.AccessCode.Code)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.AccessCode.Code)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.AccessCode.OrganisationName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.AccessCode.OrganisationName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.AccessCode.CreatedDate)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.AccessCode.CreatedDate)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.AccessCode.ExpiryDate)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.AccessCode.ExpiryDate)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.AccessCode.IsActive)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.AccessCode.IsActive)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.AccessCode.Applicant)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.AccessCode.Applicant.FirstName)
-        </dd>
-    </dl>
-    
-    <form method="post">
-        <input type="hidden" asp-for="AccessCode.AccessCodeId" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-page="./Index">Back to List</a>
-    </form>
-</div>
+<form method="post">
+    <input type="hidden" asp-for="AccessCode.AccessCodeId" />
+    <div class="form-group mt-3">
+        <button type="submit" class="btn btn-danger btn-sm">
+            <i class="bi bi-x-circle-fill"></i> Revoke
+        </button>
+        <a asp-page="/Applicants/Details" asp-route-id="@Model.AccessCode.ApplicantNumber" class="btn btn-secondary btn-sm">
+            <i class="bi bi-arrow-left"></i> Cancel
+        </a>
+    </div>
+</form>

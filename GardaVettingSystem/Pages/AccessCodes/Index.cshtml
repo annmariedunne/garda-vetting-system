@@ -53,7 +53,7 @@
                 @Html.DisplayFor(modelItem => item.IsActive)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Applicant.FirstName)
+                @Html.DisplayFor(modelItem => item.Applicant!.FirstName)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.AccessCodeId">Edit</a> |

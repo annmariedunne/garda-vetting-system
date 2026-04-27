@@ -17,7 +17,7 @@ namespace GardaVettingSystem.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "10.0.5")
+                .HasAnnotation("ProductVersion", "10.0.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -352,7 +352,7 @@ namespace GardaVettingSystem.Data.Migrations
             modelBuilder.Entity("GardaVettingSystem.Models.AccessCode", b =>
                 {
                     b.HasOne("GardaVettingSystem.Models.Applicant", "Applicant")
-                        .WithMany()
+                        .WithMany("AccessCodes")
                         .HasForeignKey("ApplicantNumber")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -363,7 +363,7 @@ namespace GardaVettingSystem.Data.Migrations
             modelBuilder.Entity("GardaVettingSystem.Models.ApplicantAddress", b =>
                 {
                     b.HasOne("GardaVettingSystem.Models.Applicant", "Applicant")
-                        .WithMany()
+                        .WithMany("ApplicantAddresses")
                         .HasForeignKey("ApplicantNumber")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -420,6 +420,13 @@ namespace GardaVettingSystem.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("GardaVettingSystem.Models.Applicant", b =>
+                {
+                    b.Navigation("AccessCodes");
+
+                    b.Navigation("ApplicantAddresses");
                 });
 #pragma warning restore 612, 618
         }

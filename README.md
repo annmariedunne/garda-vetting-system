@@ -3,8 +3,6 @@
 [![CI - Build and Test](https://github.com/annmariedunne/garda-vetting-system/actions/workflows/ci.yml/badge.svg)](https://github.com/annmariedunne/garda-vetting-system/actions/workflows/ci.yml)
 [![CodeQL Security Scan](https://github.com/annmariedunne/garda-vetting-system/actions/workflows/codeql.yml/badge.svg)](https://github.com/annmariedunne/garda-vetting-system/actions/workflows/codeql.yml)
 
-> ⚠️ **This is a temporary README and will be updated as the project progresses.**
-
 ## Overview
 
 This project is a college project developed as part of the the Project Module at ATU.
@@ -13,16 +11,25 @@ This project is a college project developed as part of the the Project Module at
 
 | Layer | Technology |
 |---|---|
-| Framework | ASP.NET Core with Razor Pages |
+| Framework | ASP.NET Core (.NET 10) with Razor Pages |
 | Database | SQL Server |
 | ORM | Entity Framework Core |
 | Language | C# |
+
+## Development Tools
+
+| Tool | Version |
+|---|---|
+| IDE | Visual Studio 2026 |
+| Testing | NUnit |
+| ORM Tooling | Entity Framework Core Tools |
+| DevOps | GitHub Actions, SonarQube, CodeQL |
 
 ---
 
 ## Project Status
 
-🚧 **In Development** — Initial development phase
+🚧 **In Development** — All functional requirements met, Implementation Chapter in progress
 
 ### Completed
 - ✅ GitHub repository setup with branch protection and dev workflow
@@ -31,18 +38,40 @@ This project is a college project developed as part of the the Project Module at
 - ✅ Entity Framework Core configured with SQL Server LocalDB
 - ✅ Core domain models created: Applicant, ApplicantAddress, AccessCode
 - ✅ NUnit test project added with initial model tests
-- ✅ GitHub Actions CI/CD pipeline in progress
+- ✅ GitHub Actions CI/CD pipeline implemented
+- ✅ Secure user registration and authentication
+- ✅ Personal data storage (Applicant profile)
+- ✅ ApplicantAddresses secured with ownership checks and wired to profile
+- ✅ Address history displayed on Applicant profile page
+- ✅ NUnit tests expanded — ApplicantAddress model and Applicant validation tests
+- ✅ Pull request template added
+- ✅ AccessCode generation with cryptographically secure 12-character codes
+- ✅ AccessCode revocation with audit trail preserved
+- ✅ Organisation-side validation page
+- ✅ XML doc comments added throughout all models and page models
+- ✅ NuGet packages updated to latest versions
+- ✅ Post-deletion confirmation flow with option to fully delete Identity account
+- ✅ ResidentFrom made nullable with database migration
+- ✅ Clipboard copy button for access codes
+- ✅ PDF export — applicant profile downloadable as PDF
+- ✅ Default pages updated for consistency (Index, Privacy, Error, Layout)
+- ✅ Public validate access added — organisations can validate codes without logging in
+- ✅ Privacy page updated — GDPR-aware Privacy Notice added
+- ✅ EF Core tracking conflict fixed on Applicant and Address edit pages
+- ✅ Navbar updated to display applicant first name instead of email address
+- ✅ UI responsive layout improvements — all form and display pages updated for mobile, tablet and desktop
+- ✅ "Mother's Maiden Name" label corrected across all pages, Applicant.cs string messages and PDF export
+- ✅ Resident To hint text added to address pages
 
 ### In Progress
-- 🔄 Initial database migration
-- 🔄 GitHub Actions CI/CD pipeline
+- 🔄 Implementation Chapter writeup — deadline 3 May 2026
 
 ## Documentation Project Timeline
 
 | Milestone | Target Date | Status |
 |---|---|---|
 | Introduction Chapter | 22 March 2026 | ✅ |
-| Design Chapter | 19 April 2026 | |
+| Design Chapter | 19 April 2026 | ✅ |
 | Implementation Chapter | 3 May 2026 | |
 | Testing Chapter | 17 May 2026 | |
 | Final Submission | 20 May 2026 | |
