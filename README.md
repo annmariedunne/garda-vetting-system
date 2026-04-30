@@ -15,6 +15,9 @@ This project is a college project developed as part of the the Project Module at
 | Database | SQL Server |
 | ORM | Entity Framework Core |
 | Language | C# |
+| Authentication | ASP.NET Identity |
+| PDF Generation | QuestPDF |
+| UI Framework | Bootstrap / Bootstrap Icons |
 
 ## Development Tools
 
@@ -24,12 +27,13 @@ This project is a college project developed as part of the the Project Module at
 | Testing | NUnit |
 | ORM Tooling | Entity Framework Core Tools |
 | DevOps | GitHub Actions, SonarQube, CodeQL |
+| Documentation | DocFX |
 
 ---
 
 ## Project Status
 
-🚧 **In Development** — All functional requirements met, Implementation Chapter in progress
+🚧 **In Development** — Implementation Chapter submitted, Testing Chapter in progress
 
 ### Completed
 - ✅ GitHub repository setup with branch protection and dev workflow
@@ -62,9 +66,10 @@ This project is a college project developed as part of the the Project Module at
 - ✅ UI responsive layout improvements — all form and display pages updated for mobile, tablet and desktop
 - ✅ "Mother's Maiden Name" label corrected across all pages, Applicant.cs string messages and PDF export
 - ✅ Resident To hint text added to address pages
+- ✅ DocFX documentation site configured and generated
 
 ### In Progress
-- 🔄 Implementation Chapter writeup — deadline 3 May 2026
+- 🔄 Testing Chapter writeup — deadline 17 May 2026
 
 ## Documentation Project Timeline
 
@@ -72,7 +77,7 @@ This project is a college project developed as part of the the Project Module at
 |---|---|---|
 | Introduction Chapter | 22 March 2026 | ✅ |
 | Design Chapter | 19 April 2026 | ✅ |
-| Implementation Chapter | 3 May 2026 | |
+| Implementation Chapter | 3 May 2026 | ✅ |
 | Testing Chapter | 17 May 2026 | |
 | Final Submission | 20 May 2026 | |
 
