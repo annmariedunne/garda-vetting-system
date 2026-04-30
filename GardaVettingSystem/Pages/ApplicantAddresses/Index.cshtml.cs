@@ -6,8 +6,9 @@ using GardaVettingSystem.Models;
 namespace GardaVettingSystem.Pages.ApplicantAddresses
 {
     /// <summary>
-    /// Displays a list of all applicant addresses. Not part of the main user flow —
-    /// retained as a scaffolded page for potential future admin use.
+    /// Displays a list of all applicant addresses.
+    /// <para>Not part of the main user flow —
+    /// retained as a scaffolded page for potential future admin use.</para>
     /// </summary>
     public class IndexModel : PageModel
     {

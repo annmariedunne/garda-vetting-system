@@ -12,8 +12,9 @@ namespace GardaVettingSystem.Pages.Applicants
 {
     /// <summary>
     /// Displays the logged-in user's applicant profile, including their address history
-    /// and access codes. This is the central hub page of the application as documented
-    /// in the system workflow.
+    /// and access codes.
+    /// <para>This is the central hub page of the application as documented
+    /// in the system workflow.</para>
     /// </summary>
     [Authorize]
     public class DetailsModel : PageModel
@@ -71,8 +72,9 @@ namespace GardaVettingSystem.Pages.Applicants
         }
 
         /// <summary>
-        /// Handles POST requests for PDF export. Generates a PDF of the applicant's
-        /// vetting profile and returns it as a file download.
+        /// Handles POST requests for PDF export.
+        /// <para>Generates a PDF of the applicant's vetting profile and
+        /// returns it as a file download.</para>
         /// </summary>
         /// <param name="id">The ApplicantNumber to export.</param>
         /// <returns>A PDF file download, or a redirect if the profile is not found.</returns>

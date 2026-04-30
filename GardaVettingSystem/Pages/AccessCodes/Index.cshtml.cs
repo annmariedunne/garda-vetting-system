@@ -6,8 +6,9 @@ using GardaVettingSystem.Models;
 namespace GardaVettingSystem.Pages.AccessCodes
 {
     /// <summary>
-    /// Displays a list of all access codes. Not part of the main user flow —
-    /// retained as a scaffolded page for potential future admin use.
+    /// Displays a list of all access codes.
+    /// <para>Not part of the main user flow — retained as a scaffolded page for
+    /// potential future admin use.</para>
     /// </summary>
     public class IndexModel : PageModel
     {

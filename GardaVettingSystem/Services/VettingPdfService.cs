@@ -8,8 +8,8 @@ namespace GardaVettingSystem.Services
 {
     /// <summary>
     /// Generates a PDF document containing an applicant's vetting information.
-    /// Used to provide a downloadable export of profile data for organisations
-    /// that cannot access the system directly.
+    /// <para>Used to provide a downloadable export of profile data for organisations
+    /// that cannot access the system directly.</para>
     /// </summary>
     public sealed class VettingPdfService
     {

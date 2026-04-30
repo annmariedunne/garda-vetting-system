@@ -6,8 +6,8 @@ namespace GardaVettingSystem.Data
 {
     /// <summary>
     /// The Entity Framework Core database context for the Garda Vetting Data Reuse System.
-    /// Extends <see cref="IdentityDbContext"/> to include ASP.NET Identity tables alongside
-    /// the application's domain models.
+    /// <para>Extends <see cref="IdentityDbContext"/> to include ASP.NET Identity tables alongside
+    /// the application's domain models.</para>
     /// </summary>
     public class GardaVettingSystemDbContext(DbContextOptions<GardaVettingSystemDbContext> options) : IdentityDbContext(options)
     {

@@ -8,9 +8,9 @@ namespace GardaVettingSystem.Pages.AccessCodes
 {
     /// <summary>
     /// Handles validation of an access code entered by an organisation.
-    /// This is a public page — no authentication is required.
-    /// An organisation enters a code to view the associated applicant's vetting data,
-    /// provided the code is active and has not expired.
+    /// <para>This is a public page — no authentication is required.</para>
+    /// <para>An organisation enters a code to view the associated applicant's vetting data,
+    /// provided the code is active and has not expired.</para>
     /// </summary>
     public class ValidateModel : PageModel
     {
@@ -33,13 +33,13 @@ namespace GardaVettingSystem.Pages.AccessCodes
 
         /// <summary>
         /// The applicant profile returned when a valid code is found.
-        /// Null if no valid code was found.
+        /// <para>Null if no valid code was found.</para>
         /// </summary>
         public Applicant? FoundApplicant { get; set; }
 
         /// <summary>
         /// An error message to display when the code is invalid, expired or revoked.
-        /// Null if no error occurred.
+        /// <para>Null if no error occurred.</para>
         /// </summary>
         public string? ErrorMessage { get; set; }
 
@@ -53,8 +53,9 @@ namespace GardaVettingSystem.Pages.AccessCodes
         }
 
         /// <summary>
-        /// Handles POST requests. Looks up the entered code and returns the associated
-        /// applicant's data if the code is valid, active and not expired.
+        /// Handles POST requests.
+        /// <para>Looks up the entered code and returns the associated
+        /// applicant's data if the code is valid, active and not expired.</para>
         /// </summary>
         /// <returns>The Validate page with results or an error message.</returns>
         public async Task<IActionResult> OnPostAsync()
