@@ -10,7 +10,7 @@ namespace GardaVettingSystem.Pages.ApplicantAddresses
 {
     /// <summary>
     /// Handles the deletion of an address belonging to the logged-in applicant.
-    /// Ownership is verified server-side — users can only delete their own addresses.
+    /// <para>Ownership is verified server-side — users can only delete their own addresses.</para>
     /// </summary>
     [Authorize]
     public class DeleteModel : PageModel

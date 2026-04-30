@@ -10,8 +10,8 @@ namespace GardaVettingSystem.Pages.Applicants
 {
     /// <summary>
     /// Handles the creation of a new applicant profile for the logged-in user.
-    /// Each user can only have one profile — if one already exists, the user is
-    /// redirected to Edit instead.
+    /// <para>Each user can only have one profile — if one already exists, the user is
+    /// redirected to Edit instead.</para>
     /// </summary>
     [Authorize]
     public class CreateModel : PageModel
@@ -38,7 +38,7 @@ namespace GardaVettingSystem.Pages.Applicants
 
         /// <summary>
         /// Handles GET requests. Checks whether the logged-in user already has a profile.
-        /// If so, redirects to Edit to prevent duplicate profiles.
+        /// <para>If so, redirects to Edit to prevent duplicate profiles.</para>
         /// </summary>
         /// <returns>The Create page, or a redirect to Edit if a profile already exists.</returns>
         public async Task<IActionResult> OnGetAsync()
@@ -60,7 +60,7 @@ namespace GardaVettingSystem.Pages.Applicants
 
         /// <summary>
         /// Handles POST requests. Sets UserId server-side and saves the new applicant profile.
-        /// If a profile already exists for this user, redirects to Edit instead.
+        /// <para>If a profile already exists for this user, redirects to Edit instead.</para>
         /// </summary>
         /// <returns>
         /// A redirect to Details on success, Edit if profile already exists,

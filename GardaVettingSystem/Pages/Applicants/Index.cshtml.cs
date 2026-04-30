@@ -10,9 +10,10 @@ namespace GardaVettingSystem.Pages.Applicants
 {
     /// <summary>
     /// Acts as a smart redirect entry point for the Applicants section.
-    /// Routes the logged-in user directly to their profile Details page,
-    /// or to Create if no profile exists. Also handles post-deletion confirmation
-    /// and full account deletion including the Identity user record.
+    /// <para>Routes the logged-in user directly to their profile Details page,
+    /// or to Create if no profile exists.</para>
+    /// <para>Also handles post-deletion confirmation and full account deletion
+    /// including the Identity user record.</para>
     /// </summary>
     [Authorize]
     public class IndexModel : PageModel
@@ -41,9 +42,10 @@ namespace GardaVettingSystem.Pages.Applicants
         public IList<Applicant> Applicant { get;set; } = default!;
 
         /// <summary>
-        /// Handles GET requests. Redirects the logged-in user to their profile Details page,
-        /// or to Create if no profile exists. Renders the post-deletion confirmation page
-        /// if the deleted parameter is true.
+        /// Handles GET requests.
+        /// <para>Redirects the logged-in user to their profile Details page,
+        /// or to Create if no profile exists.</para>
+        /// <para>Renders the post-deletion confirmation page if the deleted parameter is true.</para>
         /// </summary>
         /// <param name="deleted">Indicates whether the user has just deleted their profile.</param>
         /// <returns>A redirect to Details, Create, or the deletion confirmation page.</returns>
@@ -65,8 +67,9 @@ namespace GardaVettingSystem.Pages.Applicants
         }
 
         /// <summary>
-        /// Handles POST requests. Deletes the Identity user account and signs the user out.
-        /// This permanently removes the user's email and login credentials from the system.
+        /// Handles POST requests.
+        /// <para>Deletes the Identity user account and signs the user out.</para>
+        /// <para>This permanently removes the user's email and login credentials from the system.</para>
         /// </summary>
         /// <returns>A redirect to the application root after sign out.</returns>
         public async Task<IActionResult> OnPostAsync()

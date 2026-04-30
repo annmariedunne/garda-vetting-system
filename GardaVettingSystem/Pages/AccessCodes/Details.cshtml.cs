@@ -8,7 +8,7 @@ namespace GardaVettingSystem.Pages.AccessCodes
 {
     /// <summary>
     /// Displays the details of a single access code.
-    /// Not part of the main user flow — retained as a scaffolded page for potential future use.
+    /// <para>Not part of the main user flow — retained as a scaffolded page for potential future use.</para>
     /// </summary>
     public class DetailsModel : PageModel
     {

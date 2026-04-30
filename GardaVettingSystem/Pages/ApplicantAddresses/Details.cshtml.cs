@@ -8,7 +8,7 @@ namespace GardaVettingSystem.Pages.ApplicantAddresses
 {
     /// <summary>
     /// Displays the details of a single applicant address.
-    /// Not part of the main user flow — retained as a scaffolded page for potential future use.
+    /// <para>Not part of the main user flow — retained as a scaffolded page for potential future use.</para>
     /// </summary>
     public class DetailsModel : PageModel
     {

@@ -5,8 +5,8 @@ namespace GardaVettingSystem.Models
 {
     /// <summary>
     /// Represents a single address entry in an applicant's address history.
-    /// An applicant can have multiple addresses covering different periods of residence.
-    /// Address history is a standard requirement for Garda vetting applications.
+    /// <para>An applicant can have multiple addresses covering different periods of residence.</para>
+    /// <para>Address history is a standard requirement for Garda vetting applications.</para>
     /// </summary>
     public class ApplicantAddress
     {
@@ -18,7 +18,7 @@ namespace GardaVettingSystem.Models
 
         /// <summary>
         /// Foreign key referencing the <see cref="Applicant"/> this address belongs to.
-        /// Always set server-side — never accepted from form input.
+        /// <para>Always set server-side — never accepted from form input.</para>
         /// </summary>
         [ForeignKey("Applicant")]
         public int ApplicantNumber { get; set; }
@@ -33,8 +33,8 @@ namespace GardaVettingSystem.Models
 
         /// <summary>
         /// Gets or sets the postcode for this address.
-        /// Stored as Postcode rather than Eircode to accommodate applicants who lived abroad,
-        /// as Eircode is Ireland-specific. Optional field.
+        /// <para>Stored as Postcode rather than Eircode to accommodate applicants who lived abroad,
+        /// as Eircode is Ireland-specific. Optional field.</para>
         /// </summary>
         [StringLength(10, ErrorMessage = "Postcode/Eircode cannot exceed 10 characters")]
         [Display(Name = "Postcode/Eircode")]
@@ -42,15 +42,15 @@ namespace GardaVettingSystem.Models
 
         /// <summary>
         /// Gets or sets the country for this address.
-        /// Optional field.
+        /// <para>Optional field.</para>
         /// </summary>
         [StringLength(50, ErrorMessage = "Country cannot exceed 50 characters")]
         public string Country { get; set; } = string.Empty;
 
         /// <summary>
         /// Gets or sets the year the applicant began residing at this address.
-        /// Stored as an integer year rather than a full date — a deliberate design decision
-        /// as Garda vetting applications require year-level precision only.
+        /// <para>Stored as an integer year rather than a full date — a deliberate design decision
+        /// as Garda vetting applications require year-level precision only.</para>
         /// </summary>
         [Required(ErrorMessage = "Resident from year is required")]
         [Display(Name = "Resident From")]
@@ -58,7 +58,7 @@ namespace GardaVettingSystem.Models
 
         /// <summary>
         /// Gets or sets the year the applicant stopped residing at this address.
-        /// A null value indicates this is the applicant's current address.
+        /// <para>A null value indicates this is the applicant's current address.</para>
         /// </summary>
         [Display(Name = "Resident To")]
         public int? ResidentTo { get; set; }

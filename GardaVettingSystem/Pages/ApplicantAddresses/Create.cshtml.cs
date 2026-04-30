@@ -10,8 +10,8 @@ namespace GardaVettingSystem.Pages.ApplicantAddresses
 {
     /// <summary>
     /// Handles the creation of a new address for the logged-in applicant.
-    /// ApplicantNumber is always set server-side from the logged-in user's identity —
-    /// it is never accepted from the form to prevent cross-user data manipulation.
+    /// <para>ApplicantNumber is always set server-side from the logged-in user's identity —
+    /// it is never accepted from the form to prevent cross-user data manipulation.</para>
     /// </summary>
     [Authorize]
     public class CreateModel : PageModel

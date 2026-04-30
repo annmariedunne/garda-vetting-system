@@ -10,8 +10,8 @@ namespace GardaVettingSystem.Pages.AccessCodes
 {
     /// <summary>
     /// Handles revocation of an access code for the logged-in applicant.
-    /// Revocation sets IsActive to false rather than deleting the record,
-    /// preserving the audit trail in line with GDPR accountability principles.
+    /// <para>Revocation sets IsActive to false rather than deleting the record,
+    /// preserving the audit trail in line with GDPR accountability principles.</para>
     /// </summary>
     [Authorize]
     public class DeleteModel : PageModel

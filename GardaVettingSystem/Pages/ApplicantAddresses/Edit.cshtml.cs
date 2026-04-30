@@ -10,8 +10,8 @@ namespace GardaVettingSystem.Pages.ApplicantAddresses
 {
     /// <summary>
     /// Handles the editing of an existing address belonging to the logged-in applicant.
-    /// Ownership is verified server-side on both GET and POST — users can only edit their own addresses.
-    /// ApplicantNumber is always set server-side and never accepted from the form.
+    /// <para>Ownership is verified server-side on both GET and POST — users can only edit their own addresses.</para>
+    /// <para>ApplicantNumber is always set server-side and never accepted from the form.</para>
     /// </summary>
     [Authorize]
     public class EditModel : PageModel
@@ -75,8 +75,9 @@ namespace GardaVettingSystem.Pages.ApplicantAddresses
         }
 
         /// <summary>
-        /// Handles POST requests. Verifies ownership, sets ApplicantNumber server-side,
-        /// and saves the updated address.
+        /// Handles POST requests.
+        /// <para>Verifies ownership, sets ApplicantNumber server-side,
+        /// and saves the updated address.</para>
         /// </summary>
         /// <returns>
         /// A redirect to the applicant's Details page on success, or the form page
