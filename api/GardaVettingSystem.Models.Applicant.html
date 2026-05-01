@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class Applicant | Garda Vetting System </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class Applicant | Garda Vetting System ">
+      
+      <meta name="description" content="Represents an applicant&#39;s personal profile in the Garda Vetting Data Reuse System. Each registered user can have one applicant profile, which stores personal information required for Garda vetting applications. The profile can be shared with organisations via generated access codes,  eliminating the need for repeated data entry.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/annmariedunne/garda-vetting-system/new/main/apiSpec/new?filename=GardaVettingSystem_Models_Applicant.md&amp;value=---%0Auid%3A%20GardaVettingSystem.Models.Applicant%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="Garda Vetting System">
+            Garda Vetting System
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="GardaVettingSystem.Models.Applicant">
+
+
+
+  <h1 id="GardaVettingSystem_Models_Applicant" data-uid="GardaVettingSystem.Models.Applicant" class="text-break">
+Class Applicant  <a class="header-action link-secondary" title="View source" href="https://github.com/annmariedunne/garda-vetting-system/blob/main/GardaVettingSystem/Models/Applicant.cs/#L12"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="GardaVettingSystem.html">GardaVettingSystem</a>.<a class="xref" href="GardaVettingSystem.Models.html">Models</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>GardaVettingSystem.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Represents an applicant's personal profile in the Garda Vetting Data Reuse System.</p>
+<p>Each registered user can have one applicant profile, which stores personal information
+required for Garda vetting applications.</p>
+<p>The profile can be shared with organisations via generated access codes, 
+eliminating the need for repeated data entry.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class Applicant</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">Applicant</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="GardaVettingSystem_Models_Applicant_AccessCodes_" data-uid="GardaVettingSystem.Models.Applicant.AccessCodes*"></a>
+
+  <h3 id="GardaVettingSystem_Models_Applicant_AccessCodes" data-uid="GardaVettingSystem.Models.Applicant.AccessCodes">
+  AccessCodes
+  <a class="header-action link-secondary" title="View source" href="https://github.com/annmariedunne/garda-vetting-system/blob/main/GardaVettingSystem/Models/Applicant.cs/#L97"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Navigation property — the collection of access codes generated by this applicant.</p>
+<p>Access codes allow organisations to view the applicant's vetting data.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICollection&lt;AccessCode&gt; AccessCodes { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;<a class="xref" href="GardaVettingSystem.Models.AccessCode.html">AccessCode</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="GardaVettingSystem_Models_Applicant_ApplicantAddresses_" data-uid="GardaVettingSystem.Models.Applicant.ApplicantAddresses*"></a>
+
+  <h3 id="GardaVettingSystem_Models_Applicant_ApplicantAddresses" data-uid="GardaVettingSystem.Models.Applicant.ApplicantAddresses">
+  ApplicantAddresses
+  <a class="header-action link-secondary" title="View source" href="https://github.com/annmariedunne/garda-vetting-system/blob/main/GardaVettingSystem/Models/Applicant.cs/#L91"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Navigation property — the collection of addresses associated with this applicant.</p>
+<p>An applicant can have multiple addresses representing their address history.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICollection&lt;ApplicantAddress&gt; ApplicantAddresses { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;<a class="xref" href="GardaVettingSystem.Models.ApplicantAddress.html">ApplicantAddress</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="GardaVettingSystem_Models_Applicant_ApplicantNumber_" data-uid="GardaVettingSystem.Models.Applicant.ApplicantNumber*"></a>
+
+  <h3 id="GardaVettingSystem_Models_Applicant_ApplicantNumber" data-uid="GardaVettingSystem.Models.Applicant.ApplicantNumber">
+  ApplicantNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/annmariedunne/garda-vetting-system/blob/main/GardaVettingSystem/Models/Applicant.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Primary key — auto-generated unique identifier for the applicant profile.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Key]
+public int ApplicantNumber { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="GardaVettingSystem_Models_Applicant_BirthLastName_" data-uid="GardaVettingSystem.Models.Applicant.BirthLastName*"></a>
+
+  <h3 id="GardaVettingSystem_Models_Applicant_BirthLastName" data-uid="GardaVettingSystem.Models.Applicant.BirthLastName">
+  BirthLastName
+  <a class="header-action link-secondary" title="View source" href="https://github.com/annmariedunne/garda-vetting-system/blob/main/GardaVettingSystem/Models/Applicant.cs/#L51"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets or sets the applicant's surname at birth, if different from their current last name.</p>
+<p>Optional field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[StringLength(50, ErrorMessage = &quot;Birth surname cannot exceed 50 characters&quot;)]
+[Display(Name = &quot;Surname at birth&quot;)]
+public string BirthLastName { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="GardaVettingSystem_Models_Applicant_BirthPlace_" data-uid="GardaVettingSystem.Models.Applicant.BirthPlace*"></a>
+
+  <h3 id="GardaVettingSystem_Models_Applicant_BirthPlace" data-uid="GardaVettingSystem.Models.Applicant.BirthPlace">
+  BirthPlace
+  <a class="header-action link-secondary" title="View source" href="https://github.com/annmariedunne/garda-vetting-system/blob/main/GardaVettingSystem/Models/Applicant.cs/#L83"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets or sets the applicant's place of birth.</p>
+<p>Optional field.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[StringLength(50, ErrorMessage = &quot;Birth place cannot exceed 50 characters&quot;)]
+[Display(Name = &quot;Place of birth&quot;)]
+public string BirthPlace { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="GardaVettingSystem_Models_Applicant_DateOfBirth_" data-uid="GardaVettingSystem.Models.Applicant.DateOfBirth*"></a>
+
+  <h3 id="GardaVettingSystem_Models_Applicant_DateOfBirth" data-uid="GardaVettingSystem.Models.Applicant.DateOfBirth">
+  DateOfBirth
+  <a class="header-action link-secondary" title="View source" href="https://github.com/annmariedunne/garda-vetting-system/blob/main/GardaVettingSystem/Models/Applicant.cs/#L75"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets or sets the applicant's date of birth.</p>
+<p>Stored as <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a> rather than <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a> to ensure
+locale and timezone independence across different operating system regional settings.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Required(ErrorMessage = &quot;Date of Birth is required&quot;)]
+[Display(Name = &quot;Date of birth&quot;)]
+public DateTimeOffset? DateOfBirth { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetimeoffset">DateTimeOffset</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="GardaVettingSystem_Models_Applicant_FirstName_" data-uid="GardaVettingSystem.Models.Applicant.FirstName*"></a>
+
+  <h3 id="GardaVettingSystem_Models_Applicant_FirstName" data-uid="GardaVettingSystem.Models.Applicant.FirstName">
+  FirstName
+  <a class="header-action link-secondary" title="View source" href="https://github.com/annmariedunne/garda-vetting-system/blob/main/GardaVettingSystem/Models/Applicant.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets or sets the applicant's first name.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Required(ErrorMessage = &quot;First name is required&quot;)]
+[StringLength(50, ErrorMessage = &quot;First name cannot exceed 50 characters&quot;)]
+[Display(Name = &quot;First Name&quot;)]
+public string FirstName { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="GardaVettingSystem_Models_Applicant_FullName_" data-uid="GardaVettingSystem.Models.Applicant.FullName*"></a>
+
+  <h3 id="GardaVettingSystem_Models_Applicant_FullName" data-uid="GardaVettingSystem.Models.Applicant.FullName">
+  FullName
+  <a class="header-action link-secondary" title="View source" href="https://github.com/annmariedunne/garda-vetting-system/blob/main/GardaVettingSystem/Models/Applicant.cs/#L45"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Returns the applicant's full name as a concatenation of first and last name.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string FullName { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="GardaVettingSystem_Models_Applicant_Gender_" data-uid="GardaVettingSystem.Models.Applicant.Gender*"></a>
+
+  <h3 id="GardaVettingSystem_Models_Applicant_Gender" data-uid="GardaVettingSystem.Models.Applicant.Gender">
+  Gender
+  <a class="header-action link-secondary" title="View source" href="https://github.com/annmariedunne/garda-vetting-system/blob/main/GardaVettingSystem/Models/Applicant.cs/#L66"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets or sets the applicant's gender.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Required(ErrorMessage = &quot;Gender is required&quot;)]
+[Display(Name = &quot;Gender&quot;)]
+public string Gender { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="GardaVettingSystem_Models_Applicant_LastName_" data-uid="GardaVettingSystem.Models.Applicant.LastName*"></a>
+
+  <h3 id="GardaVettingSystem_Models_Applicant_LastName" data-uid="GardaVettingSystem.Models.Applicant.LastName">
+  LastName
+  <a class="header-action link-secondary" title="View source" href="https://github.com/annmariedunne/garda-vetting-system/blob/main/GardaVettingSystem/Models/Applicant.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets or sets the applicant's last name.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Required(ErrorMessage = &quot;Last name is required&quot;)]
+[StringLength(50, ErrorMessage = &quot;Last name cannot exceed 50 characters&quot;)]
+[Display(Name = &quot;Last Name&quot;)]
+public string LastName { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="GardaVettingSystem_Models_Applicant_MothersLastName_" data-uid="GardaVettingSystem.Models.Applicant.MothersLastName*"></a>
+
+  <h3 id="GardaVettingSystem_Models_Applicant_MothersLastName" data-uid="GardaVettingSystem.Models.Applicant.MothersLastName">
+  MothersLastName
+  <a class="header-action link-secondary" title="View source" href="https://github.com/annmariedunne/garda-vetting-system/blob/main/GardaVettingSystem/Models/Applicant.cs/#L59"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets or sets the applicant's mother's maiden name.</p>
+<p>Optional field required for some vetting applications.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[StringLength(50, ErrorMessage = &quot;Mother&#39;s maiden  name cannot exceed 50 characters&quot;)]
+[Display(Name = &quot;Mother&#39;s maiden name&quot;)]
+public string MothersLastName { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="GardaVettingSystem_Models_Applicant_UserId_" data-uid="GardaVettingSystem.Models.Applicant.UserId*"></a>
+
+  <h3 id="GardaVettingSystem_Models_Applicant_UserId" data-uid="GardaVettingSystem.Models.Applicant.UserId">
+  UserId
+  <a class="header-action link-secondary" title="View source" href="https://github.com/annmariedunne/garda-vetting-system/blob/main/GardaVettingSystem/Models/Applicant.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>The ASP.NET Identity user ID of the logged-in user who owns this profile.</p>
+<p>Used to enforce ownership — each user can only access their own profile.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string UserId { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/annmariedunne/garda-vetting-system/blob/main/GardaVettingSystem/Models/Applicant.cs/#L12" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
