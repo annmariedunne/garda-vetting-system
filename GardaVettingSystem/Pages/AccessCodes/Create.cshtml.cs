@@ -11,7 +11,7 @@ namespace GardaVettingSystem.Pages.AccessCodes
 {
     /// <summary>
     /// Handles the generation of a new access code for the logged-in applicant.
-    /// The applicant provides an organisation name; all other fields are set server-side.
+    /// <para>The applicant provides an organisation name; all other fields are set server-side.</para>
     /// </summary>
     [Authorize]
     public class CreateModel : PageModel
@@ -120,8 +120,8 @@ namespace GardaVettingSystem.Pages.AccessCodes
 
         /// <summary>
         /// Generates a cryptographically secure 12-character alphanumeric access code.
-        /// Characters I and O are excluded to avoid visual ambiguity with digits 1 and 0,
-        /// improving usability when codes are shared and entered manually.
+        /// <para>Characters I and O are excluded to avoid visual ambiguity with digits 1 and 0,
+        /// improving usability when codes are shared and entered manually.</para>
         /// </summary>
         /// <returns>A 12-character uppercase alphanumeric string.</returns>
         private static string GenerateAccessCode()

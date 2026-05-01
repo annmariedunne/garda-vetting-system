@@ -11,8 +11,8 @@ namespace GardaVettingSystem.Pages.Applicants
 {
     /// <summary>
     /// Handles the editing of the logged-in user's applicant profile.
-    /// Ownership is verified server-side on both GET and POST —
-    /// users can only edit their own profile.
+    /// <para>Ownership is verified server-side on both GET and POST —
+    /// users can only edit their own profile.</para>
     /// </summary>
     [Authorize]
     public class EditModel : PageModel
@@ -123,7 +123,7 @@ namespace GardaVettingSystem.Pages.Applicants
 
         /// <summary>
         /// Checks whether an applicant record exists for the given ID.
-        /// Used during concurrency exception handling.
+        /// <para>Used during concurrency exception handling.</para>
         /// </summary>
         /// <param name="id">The ApplicantNumber to check.</param>
         /// <returns>True if the record exists, false otherwise.</returns>

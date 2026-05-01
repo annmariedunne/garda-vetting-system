@@ -8,9 +8,10 @@ using GardaVettingSystem.Models;
 namespace GardaVettingSystem.Pages
 {
     /// <summary>
-    /// Page model for the application root. Acts as a smart redirect entry point —
-    /// authenticated users are routed to their profile or to Create if no profile exists.
-    /// Unauthenticated users are shown the landing page.
+    /// Page model for the application root.
+    /// <para>Acts as a smart redirect entry point — authenticated users are routed 
+    /// to their profile or to Create if no profile exists.</para>
+    /// <para>Unauthenticated users are shown the landing page.</para>
     /// </summary>
     public class IndexModel : PageModel
     {
@@ -29,8 +30,10 @@ namespace GardaVettingSystem.Pages
         }
 
         /// <summary>
-        /// Handles GET requests. Redirects authenticated users to their profile page,
-        /// or to Create if no profile exists. Unauthenticated users see the landing page.
+        /// Handles GET requests.
+        /// <para>Redirects authenticated users to their profile page, or to Create
+        /// if no profile exists.</para>
+        /// <para>Unauthenticated users see the landing page.</para>
         /// </summary>
         /// <returns>
         /// A redirect to Applicants/Index for authenticated users, or the landing page

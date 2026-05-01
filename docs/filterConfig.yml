@@ -1,0 +1,17 @@
+### YamlMime:FilterConfiguration
+apiRules:
+- exclude:
+    uidRegex: ^GardaVettingSystem\.Data\.Migrations
+    type: Namespace
+- exclude:
+    uidRegex: ^GardaVettingSystem\.Pages\.AccessCodes\.DetailsModel
+    type: Type
+- exclude:
+    uidRegex: ^GardaVettingSystem\.Pages\.AccessCodes\.IndexModel
+    type: Type
+- exclude:
+    uidRegex: ^GardaVettingSystem\.Pages\.ApplicantAddresses\.DetailsModel
+    type: Type
+- exclude:
+    uidRegex: ^GardaVettingSystem\.Pages\.ApplicantAddresses\.IndexModel
+    type: Type    

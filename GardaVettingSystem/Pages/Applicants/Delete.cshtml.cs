@@ -10,8 +10,8 @@ namespace GardaVettingSystem.Pages.Applicants
 {
     /// <summary>
     /// Handles the deletion of the logged-in user's applicant profile.
-    /// Ownership is verified server-side — users can only delete their own profile.
-    /// After deletion the user is redirected to the application root as they no longer have a profile.
+    /// <para>Ownership is verified server-side — users can only delete their own profile.</para>
+    /// <para>After deletion the user is redirected to the application root as they no longer have a profile.</para>
     /// </summary>
     [Authorize]
     public class DeleteModel : PageModel
@@ -70,7 +70,7 @@ namespace GardaVettingSystem.Pages.Applicants
 
         /// <summary>
         /// Handles POST requests. Deletes the applicant profile after verifying ownership.
-        /// Redirects to the application root on success as the user no longer has a profile.
+        /// <para>Redirects to the application root on success as the user no longer has a profile.</para>
         /// </summary>
         /// <param name="id">The ApplicantNumber to delete.</param>
         /// <returns>A redirect to the application root on success.</returns>

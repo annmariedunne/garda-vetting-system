@@ -28,3 +28,7 @@ wwwroot/lib/
 .DS_Store
 Thumbs.db
 docs/~$*.docx
+
+# DocFX generated output
+docs/_site/
+docs/api/
