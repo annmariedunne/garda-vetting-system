@@ -1143,6 +1143,11 @@
           "Newtonsoft.Json": "13.0.3"
         }
       },
+      "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
+        "type": "Transitive",
+        "resolved": "1.23.0",
+        "contentHash": "2wDnb4umupJZ/1ikgWozFVpggH1mlHQFc0odXVv2ZagL3RYwXgW9zmC15fiqIBzmaC0vLZUnLGwDY+p8ZR7Syw=="
+      },
       "Microsoft.VisualStudio.SolutionPersistence": {
         "type": "Transitive",
         "resolved": "1.0.52",
@@ -1527,6 +1532,7 @@
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "[10.0.7, )",
           "Microsoft.AspNetCore.Identity.UI": "[10.0.7, )",
           "Microsoft.EntityFrameworkCore.SqlServer": "[10.0.7, )",
+          "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "[1.23.0, )",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "[10.0.2, )",
           "NuGet.Packaging": "[7.3.1, )",
           "NuGet.Protocol": "[7.3.1, )",

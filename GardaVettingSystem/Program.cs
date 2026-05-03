@@ -39,4 +39,12 @@ app.MapStaticAssets();
 app.MapRazorPages()
    .WithStaticAssets();
 
+// Apply any pending EF Core migrations on startup.
+// Ensures the database schema is created automatically in containerised environments.
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<GardaVettingSystemDbContext>();
+    await db.Database.MigrateAsync();
+}
+
 await app.RunAsync();
