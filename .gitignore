@@ -32,3 +32,6 @@ docs/~$*.docx
 # DocFX generated output
 docs/_site/
 docs/api/
+
+# Docker info
+.env
