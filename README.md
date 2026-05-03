@@ -2,6 +2,7 @@
 
 [![CI - Build and Test](https://github.com/annmariedunne/garda-vetting-system/actions/workflows/ci.yml/badge.svg)](https://github.com/annmariedunne/garda-vetting-system/actions/workflows/ci.yml)
 [![CodeQL Security Scan](https://github.com/annmariedunne/garda-vetting-system/actions/workflows/codeql.yml/badge.svg)](https://github.com/annmariedunne/garda-vetting-system/actions/workflows/codeql.yml)
+[![Documentation](https://img.shields.io/badge/docs-live-blue)](https://annmariedunne.github.io/garda-vetting-system/)
 
 ## Overview
 
@@ -30,6 +31,12 @@ This project is a college project developed as part of the the Project Module at
 | Documentation | DocFX |
 
 ---
+
+## API Documentation
+
+Project API documentation is automatically generated from XML doc comments using DocFX and published to GitHub Pages on every push to main.
+
+📚 [View Live Documentation](https://annmariedunne.github.io/garda-vetting-system/)
 
 ## Project Status
 
